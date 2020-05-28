@@ -1,4 +1,5 @@
 export const apiKey = "AIzaSyAGlqN3bGXjlsczeJYTjdyLxySgLj0WeGw";
+
 export const ytApi =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=" +
   apiKey;

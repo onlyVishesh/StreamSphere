@@ -6,6 +6,7 @@ import { channelApi, videoApi } from "../../utils/constants";
 import Comments from "./components/Comments";
 import Video from "./components/Video";
 import VideoDetails from "./components/VideoDetails";
+import LiveChat from "./components/LiveChat";
 
 const Watch = () => {
   const [searchParams] = useSearchParams();
@@ -71,8 +72,7 @@ const Watch = () => {
         <VideoDetails data={[videoData, channelData]} />
         <Comments data={[videoId, videoData?.statistics?.commentCount]} />
       </div>
-
-      <div className="lg:w-4/12">hi</div>
+      <LiveChat />
     </div>
   );
 };
