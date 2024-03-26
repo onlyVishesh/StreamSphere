@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+ol,
+ul,
+menu,
+summary {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Main styling */
+body {
+  /* background-color: #000000; */
+  /* color: #fff; */
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Scroll Bar style */
+
+::-webkit-scrollbar {
+  background: #e0e0e0;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b3b3b;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
+.shimmer {
+  /* position: relative; */
+  background: #3a3a3a;
+  background-image: linear-gradient(
+    to right,
+    #3a3a3a 0%,
+    #3f3f3f 10%,
+    #4a4a4a 20%,
+    #3f3f3f 30%,
+    #3a3a3a 50%,
+    #3a3a3a 100%
+  );
+  /* border-radius: inherit; */
+  background-repeat: no-repeat;
+  background-size: 800px 200px;
+
+  /* Animation */
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+
+  /* Specifies style for element when animation isn't playing */
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: shimmer;
+  animation-name: shimmer;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
