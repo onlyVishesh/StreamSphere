@@ -34,7 +34,7 @@ const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   return !isMenuOpen ? (
-    <div className="fixed h-[95vh] w-14 bg-white px-1 py-4 text-[8px] text-slate-700 sm:w-20 sm:text-[10px]">
+    <div className=" fixed h-[95vh] w-14 bg-white px-1 py-4 text-[8px] text-slate-700 sm:w-20 sm:text-[10px]">
       <div className="">
         <ul className="flex flex-col gap-1 sm:gap-5">
           <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
@@ -67,7 +67,7 @@ const Sidebar = () => {
       </div>
     </div>
   ) : (
-    <div className="fixed h-[95vh] w-full bg-black bg-opacity-40 lg:bg-opacity-0">
+    <div className="fixed z-50 h-[95vh] w-full bg-black bg-opacity-40 lg:w-60">
       <div className="flex h-[95vh] w-60 flex-col flex-nowrap gap-5 overflow-y-hidden bg-white px-3 py-2 text-base text-slate-700 hover:overflow-y-scroll lg:fixed">
         <div className="">
           <ul>
