@@ -56,6 +56,9 @@ body {
   /* color: #fff; */
   scroll-behavior: smooth;
   font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 /* Scroll Bar style */
@@ -66,20 +69,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #3b3b3b;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 @-webkit-keyframes shimmer {
   0% {
-    background-position: -300px 0;
+    background-position: -100% 0;
   }
   100% {
-    background-position: 300px 0;
+    background-position: 100% 0;
   }
 }
 @keyframes shimmer {
@@ -92,20 +95,14 @@ body {
 }
 
 .shimmer {
-  /* position: relative; */
-  background: #3a3a3a;
-  background-image: linear-gradient(
-    to right,
-    #3a3a3a 0%,
-    #3f3f3f 10%,
-    #4a4a4a 20%,
-    #3f3f3f 30%,
-    #3a3a3a 50%,
-    #3a3a3a 100%
-  );
-  /* border-radius: inherit; */
-  background-repeat: no-repeat;
-  background-size: 800px 200px;
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: #ddd;
+  background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+  background-size: 1200px 100%;
 
   /* Animation */
   -webkit-animation-duration: 1s;
