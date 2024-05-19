@@ -21,7 +21,7 @@ const Header = () => {
       <div className="flex items-center gap-2">
         <button
           type="button"
-          className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-gray-300 sm:h-9 sm:w-9"
+          className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-gray-200 sm:h-9 sm:w-9"
           onClick={() => toggleMenuHandler()}
         >
           <FontAwesomeIcon
@@ -37,7 +37,7 @@ const Header = () => {
         </figcaption>
       </div>
       <div className="flex items-center gap-3 ">
-        <div className="flex items-center justify-between rounded-full border-2 border-gray-300">
+        <div className="flex items-center justify-between rounded-full border-2 border-gray-200">
           <input
             type="text"
             placeholder="Search"
@@ -45,7 +45,7 @@ const Header = () => {
           />
           <button
             type="button"
-            className="flex h-6 w-10 items-center justify-center rounded-full rounded-l-none border-y-0 border-l-2 border-r-0 border-solid border-gray-300 bg-gray-200 hover:bg-gray-300 sm:h-9 sm:w-9 sm:px-8"
+            className="flex h-6 w-10 items-center justify-center rounded-full rounded-l-none border-y-0 border-l-2 border-r-0 border-solid border-gray-200 bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9 sm:px-8"
           >
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
@@ -55,7 +55,7 @@ const Header = () => {
         </div>
         <button
           type="button"
-          className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 sm:h-9 sm:w-9"
+          className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9"
         >
           <FontAwesomeIcon
             icon={faMicrophone}
@@ -66,7 +66,7 @@ const Header = () => {
       <div className="mr-4 flex gap-2 sm:gap-4 lg:mr-12 ">
         <button
           type="button"
-          className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 sm:h-9 sm:w-9"
+          className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9"
         >
           <FontAwesomeIcon
             icon={faBell}
@@ -76,7 +76,7 @@ const Header = () => {
 
         <button
           type="button"
-          className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 sm:h-9 sm:w-9"
+          className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9"
         >
           <FontAwesomeIcon
             icon={faUser}
