@@ -1,10 +1,14 @@
-export const apiKey = "AIzaSyAgtrc1-CivMCbK0USq6w4ythMLH5keKVM";
+export const apiKey = "AIzaSyAGlqN3bGXjlsczeJYTjdyLxySgLj0WeGw";
 export const ytApi =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=" +
   apiKey;
 
 export const filters =
   "https://www.googleapis.com/youtube/v3/videoCategories?regionCode=US&key=" +
+  apiKey;
+
+export const filterApi = (filterId) =>
+  `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=50&key=` +
   apiKey;
 
 let SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"];

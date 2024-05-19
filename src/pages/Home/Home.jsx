@@ -25,10 +25,7 @@ const Home = () => {
         : "5rem";
 
   return (
-    <div
-      className={`ml-16 flex flex-col overflow-hidden`}
-      style={{ marginLeft }}
-    >
+    <div className={`flex flex-col overflow-hidden`} style={{ marginLeft }}>
       <FilterButtons />
       <VideosContainer />
     </div>
