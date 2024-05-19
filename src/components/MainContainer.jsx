@@ -1,11 +1,11 @@
-import Home from "../pages/Home/Home";
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 const MainContainer = () => {
   return (
-    <div className="">
+    <div>
       <Sidebar />
-      <Home />
+      <Outlet />
     </div>
   );
 };

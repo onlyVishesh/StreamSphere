@@ -29,6 +29,7 @@ import music from "../assets/ytMusic.svg";
 import studios from "../assets/ytStudios.svg";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -37,13 +38,16 @@ const Sidebar = () => {
     <div className=" fixed h-[95vh] w-14 bg-white px-1 py-4 text-[8px] text-slate-700 sm:w-20 sm:text-[10px]">
       <div className="">
         <ul className="flex flex-col gap-1 sm:gap-5">
-          <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+          <Link
+            to="/"
+            className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200"
+          >
             <FontAwesomeIcon
               icon={faHouse}
               className="size-4 text-black sm:size-6"
             />
             Home
-          </li>
+          </Link>
           <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
             <img src={shorts} alt="shorts" className="size-4 sm:size-6" />
             Shorts
@@ -71,10 +75,13 @@ const Sidebar = () => {
       <div className="flex h-[95vh] w-60 flex-col flex-nowrap gap-5 overflow-y-hidden bg-white px-3 py-2 text-base text-slate-700 hover:overflow-y-scroll lg:fixed">
         <div className="">
           <ul>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+            <Link
+              to="/"
+              className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200"
+            >
               <FontAwesomeIcon icon={faHouse} className="size-6 text-black" />
               Home
-            </li>
+            </Link>
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <img src={shorts} alt="shorts" className="size-6" />
               Shorts

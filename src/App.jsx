@@ -1,7 +1,10 @@
 import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Head from "./components/Header";
 import MainContainer from "./components/MainContainer";
+import Home from "./pages/Home/Home";
+import Watch from "./pages/Watch/Watch";
 import store from "./utils/store";
 
 {
@@ -41,11 +44,22 @@ Pages
 **/
 }
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainContainer />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "watch", element: <Watch /> },
+    ],
+  },
+]);
+
 function App() {
   return (
-    <Provider store={store} >
+    <Provider store={store}>
       <Head />
-      <MainContainer />
+      <RouterProvider router={appRouter} />
     </Provider>
   );
 }
