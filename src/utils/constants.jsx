@@ -11,6 +11,15 @@ export const filterApi = (filterId) =>
   `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=50&key=` +
   apiKey;
 
+export const videoApi = (videoId) =>
+  `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${apiKey}`;
+
+export const profileApi = (channelId) =>
+  `https://www.googleapis.com/youtube/v3/channels?part=snippet&fields=items%2Fsnippet%2Fthumbnails%2Fdefault&id=${channelId}&key=${apiKey}`;
+
+export const channelApi = (channelId) =>
+  `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${apiKey}`;
+
 let SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"];
 
 export const abbreviateNumber = (number) => {
@@ -71,4 +80,25 @@ export const timeSince = (date) => {
   }
 
   return Math.floor(seconds) + " seconds";
+};
+
+export const formatDuration = (duration) => {
+  const regex = /P(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?)?/;
+  const matches = duration.match(regex);
+
+  const hours = matches[1] ? parseInt(matches[1], 10) : 0;
+  const minutes = matches[2] ? parseInt(matches[2], 10) : 0;
+  const seconds = matches[3] ? parseInt(matches[3], 10) : 0;
+
+  const hh = String(hours).padStart(2, "0");
+  const mm = String(minutes).padStart(2, "0");
+  const ss = String(seconds).padStart(2, "0");
+
+  if (hours > 0) {
+    return `${hh}:${mm}:${ss}`;
+  } else if (minutes > 0) {
+    return `${mm}:${ss}`;
+  } else {
+    return `${ss}`;
+  }
 };

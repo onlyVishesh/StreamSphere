@@ -1,14 +1,22 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { abbreviateNumber, apiKey, timeSince } from "../../../utils/constants";
+import {
+  abbreviateNumber,
+  apiKey,
+  formatDuration,
+  timeSince,
+} from "../../../utils/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const VideoCard = ({ videoInfo }) => {
   const [channelProfile, setChannelProfile] = useState([]);
 
-  const { snippet, statistics } = videoInfo;
+  const { snippet, statistics, contentDetails } = videoInfo;
   const { thumbnails, title, channelId, channelTitle, publishedAt } = snippet;
   const { viewCount } = statistics;
+  const { duration } = contentDetails;
 
   useEffect(() => {
     channelProfileURL(channelId);
@@ -25,8 +33,11 @@ const VideoCard = ({ videoInfo }) => {
   return (
     <>
       <div className="m-1 flex w-80 cursor-pointer flex-col gap-1 p-2">
-        <div>
-          <img src={thumbnails.medium.url} alt="" className="rounded-lg" />
+        <div className="relative -z-10">
+          <img src={thumbnails.medium.url} alt="" className=" rounded-lg" />
+          <div className="absolute bottom-1 right-2 z-10 rounded-md bg-gray-900 px-1 py-0.5 text-xs text-white">
+            {formatDuration(duration)}
+          </div>
         </div>
         <div className="flex gap-3">
           <Link to="test" className="h-10 w-10 rounded-full">
@@ -40,9 +51,13 @@ const VideoCard = ({ videoInfo }) => {
             <div className="line-clamp-2 font-bold">{title}</div>
             <Link
               to="test"
-              className="transition-all duration-100 hover:font-semibold"
+              className="line-clamp-1 flex items-center gap-1 text-nowrap transition-all duration-100 hover:font-semibold"
             >
               {channelTitle}
+              <FontAwesomeIcon
+                icon={faCheck}
+                className="rounded-full bg-gray-700 p-0.5 text-[0.5rem] text-white"
+              />
             </Link>
             <div className="flex gap-1 text-sm">
               <div>{abbreviateNumber(viewCount)} Views</div>

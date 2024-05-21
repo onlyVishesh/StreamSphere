@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import logo from "../assets/youtube.svg";
 import { toggleMenu } from "../utils/appSlice";
 
@@ -31,9 +32,9 @@ const Header = () => {
         </button>
         <figcaption className="flex content-center items-center gap-1 hover:cursor-pointer">
           <img src={logo} alt="YouTube" className="w-6 md:w-8" />
-          <p className="hidden text-sm font-semibold -tracking-wider 2xs:block sm:text-lg">
-            YouTube
-          </p>
+            <p className="hidden text-sm font-semibold -tracking-[1.5px] 2xs:block sm:text-xl">
+              YouTube
+            </p>
         </figcaption>
       </div>
       <div className="flex items-center gap-3 ">

@@ -11,6 +11,7 @@ const Button = (props) => {
 
   Button.propTypes = {
     info: PropTypes.shape({
+      id: PropTypes.string.isRequired,
       snippet: PropTypes.shape({
         title: PropTypes.string.isRequired,
       }).isRequired,
