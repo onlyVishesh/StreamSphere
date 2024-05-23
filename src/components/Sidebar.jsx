@@ -52,14 +52,16 @@ const Sidebar = () => {
             <img src={shorts} alt="shorts" className="size-4 sm:size-6" />
             Shorts
           </li>
-          <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-            <img
-              src={subscription}
-              alt="subscription"
-              className="size-4 text-black sm:size-6"
-            />
-            Subscriptions
-          </li>
+          <Link to="/subscribe">
+            <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+              <img
+                src={subscription}
+                alt="subscription"
+                className="size-4 text-black sm:size-6"
+              />
+              Subscriptions
+            </li>
+          </Link>
           <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
             <FontAwesomeIcon
               icon={faCircleUser}
@@ -86,15 +88,16 @@ const Sidebar = () => {
               <img src={shorts} alt="shorts" className="size-6" />
               Shorts
             </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              {" "}
-              <img
-                src={subscription}
-                alt="subscription"
-                className="size-6 text-black"
-              />
-              Subscriptions
-            </li>
+            <Link to="/subscriber">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <img
+                  src={subscription}
+                  alt="subscription"
+                  className="size-6 text-black"
+                />
+                Subscriptions
+              </li>
+            </Link>
           </ul>
         </div>
         <hr />
@@ -117,17 +120,19 @@ const Sidebar = () => {
               />
               History
             </li>
+            <Link to="/watchLater">
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <FontAwesomeIcon icon={faClock} className="size-6 text-black" />
               Watch later
-            </li>
+            </li></Link>
+            <Link to="/liked">
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <FontAwesomeIcon
                 icon={faThumbsUp}
                 className="size-6 text-black"
               />
               Liked Videos
-            </li>
+            </li></Link>
           </ul>
         </div>
         <hr />

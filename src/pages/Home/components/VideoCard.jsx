@@ -40,7 +40,7 @@ const VideoCard = ({ videoInfo }) => {
           </div>
         </div>
         <div className="flex gap-3">
-          <Link to="test" className="h-10 w-10 rounded-full">
+          <Link to="/channel" className="h-10 w-10 rounded-full">
             <img
               src={channelProfile}
               alt={channelTitle}
@@ -50,7 +50,7 @@ const VideoCard = ({ videoInfo }) => {
           <div className="w-10/12">
             <div className="line-clamp-2 font-bold">{title}</div>
             <Link
-              to="test"
+              to="/channel"
               className="line-clamp-1 flex items-center gap-1 text-nowrap transition-all duration-100 hover:font-semibold"
             >
               {channelTitle}
