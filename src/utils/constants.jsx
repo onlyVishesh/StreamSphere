@@ -11,6 +11,10 @@ export const filterApi = (filterId) =>
   `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=50&key=` +
   apiKey;
 
+export const commentsApi = (videoId) =>
+  `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&textFormat=plainText&videoId=${videoId}&maxResults=50&key=` +
+  apiKey;
+
 export const videoApi = (videoId) =>
   `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${apiKey}`;
 
