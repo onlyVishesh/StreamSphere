@@ -9,11 +9,13 @@ const VideosContainer = () => {
   const [videoData, setVideoData] = useState([]);
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [noVideos, setNoVideos] = useState(false);
   const filterId = useSelector((store) => store.app.filterId);
 
   useEffect(() => {
     setVideoData([]);
     setPageToken(null);
+    setNoVideos(false);
     getVideoData();
   }, [filterId]);
 
@@ -35,44 +37,68 @@ const VideosContainer = () => {
     if (loading) return;
 
     setLoading(true);
-    if (token === null || token === undefined) {
-      const data = await fetch(filterApi(filterId));
+    try {
+      let url = filterApi(filterId);
+      if (token) {
+        url += `&pageToken=${token}`;
+      }
+      const data = await fetch(url);
       const json = await data.json();
-      setVideoData((prevData) => {
-        const uniqueVideos = json.items.filter((item) => {
-          return !prevData.some((prevVideo) => prevVideo.id === item.id);
-        });
-        return [...prevData, ...uniqueVideos];
-      });
-      setPageToken(json.nextPageToken);
-    } else {
-      const data = await fetch(filterApi(filterId) + `&pageToken=${token}`);
-      const json = await data.json();
-      setVideoData((prevData) => {
-        const uniqueVideos = json.items.filter((item) => {
-          return !prevData.some((prevVideo) => prevVideo.id === item.id);
-        });
-        return [...prevData, ...uniqueVideos];
-      });
-      setPageToken(json.nextPageToken);
-    }
 
-    setLoading(false);
+      if (!json.items || json.items.length === 0) {
+        setNoVideos(true);
+        setLoading(false);
+        return;
+      }
+
+      setVideoData((prevData) => {
+        const uniqueVideos = json.items.filter((item) => {
+          return !prevData.some((prevVideo) => prevVideo.id === item.id);
+        });
+        return [...prevData, ...uniqueVideos];
+      });
+
+      setPageToken(json.nextPageToken);
+      setNoVideos(false);
+    } catch (error) {
+      console.error("Failed to load videos", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  return videoData === undefined ? (
-    <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
-      {new Array(20).fill(0).map((element, index) => {
-        return <VideoCardShimmer key={index} />;
-      })}
-    </div>
-  ) : (
+  if (noVideos) {
+    return (
+      <div className="mt-20 flex w-full justify-center text-3xl">
+        No videos available
+      </div>
+    );
+  }
+
+  if (videoData.length === 0 && loading) {
+    return (
+      <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
+        {new Array(20).fill(0).map((_, index) => (
+          <VideoCardShimmer key={index} />
+        ))}
+      </div>
+    );
+  }
+
+  return (
     <div className="mt-20 flex flex-wrap justify-center">
       {videoData.map((video) => (
         <Link to={`/watch?v=${video.id}`} key={video.id}>
           <VideoCard videoInfo={video} />
         </Link>
       ))}
+      {loading && (
+        <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
+          {new Array(5).fill(0).map((_, index) => (
+            <VideoCardShimmer key={index} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

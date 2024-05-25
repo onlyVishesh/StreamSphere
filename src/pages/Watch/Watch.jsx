@@ -18,6 +18,9 @@ const Watch = () => {
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
