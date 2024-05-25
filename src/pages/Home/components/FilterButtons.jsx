@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeFilterId } from "../../../utils/appSlice";
 import { filters } from "../../../utils/constants";
+import { changeFilterId } from "../../../utils/filterSlice";
 import Button from "./Button";
 
 const FilterButtons = () => {
   const [titles, setTitles] = useState([]);
+  const [activeButtonId, setActiveButtonId] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,19 +19,31 @@ const FilterButtons = () => {
     setTitles(json.items);
   };
 
+  const handleButtonClick = (id) => {
+    setActiveButtonId(id);
+    dispatch(changeFilterId(id));
+  };
+
   return (
     <div className="fixed z-0 flex w-full justify-center bg-white">
       <div className="my-2 flex h-fit w-11/12 cursor-grabbing flex-nowrap items-center gap-2 overflow-x-scroll px-10 no-scrollbar 2xs:px-4 sm:gap-4 sm:px-0 lg:mx-4">
         <button
-          className="h-8 text-nowrap rounded-sm bg-slate-200 px-1 py-0 text-xs font-medium text-black transition-transform duration-200 hover:scale-105 hover:cursor-pointer hover:bg-slate-300 focus:bg-black focus:text-white sm:rounded-md sm:px-2 sm:py-1 sm:text-sm"
-          onClick={() => {
-            dispatch(changeFilterId(0));
-          }}
+          className={`h-8 text-nowrap rounded-sm px-1 py-0 text-xs font-medium transition-transform duration-200 hover:scale-105 hover:cursor-pointer sm:rounded-md sm:px-2 sm:py-1 sm:text-sm ${
+            activeButtonId === 0
+              ? "bg-black text-white"
+              : "bg-slate-200 text-black"
+          }`}
+          onClick={() => handleButtonClick(0)}
         >
           All
         </button>
         {titles.map((title) => (
-          <Button info={title} key={title.id} />
+          <Button
+            info={title}
+            key={title.id}
+            isActive={activeButtonId === title.id}
+            onClick={() => handleButtonClick(title.id)}
+          />
         ))}
       </div>
     </div>

@@ -10,7 +10,7 @@ const VideosContainer = () => {
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
-  const filterId = useSelector((store) => store.app.filterId);
+  const filterId = useSelector((store) => store.filter.filterId);
 
   useEffect(() => {
     setVideoData([]);
