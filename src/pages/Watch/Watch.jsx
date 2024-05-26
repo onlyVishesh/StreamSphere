@@ -63,7 +63,7 @@ const Watch = () => {
       : windowWidth < 640
         ? "3rem"
         : "5rem";
-
+  console.log(videoId);
   return (
     <div className={`m-5 flex gap-5 overflow-hidden`} style={{ marginLeft }}>
       <div className="ml-5 flex flex-col gap-3 lg:w-9/12">

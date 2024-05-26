@@ -7,6 +7,9 @@ export const filters =
   "https://www.googleapis.com/youtube/v3/videoCategories?regionCode=US&key=" +
   apiKey;
 
+export const searchSuggestionApi =
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
 export const filterApi = (filterId) =>
   `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=50&key=` +
   apiKey;
