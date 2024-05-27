@@ -7,16 +7,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/youtube.svg";
 import { toggleMenu } from "../utils/appSlice";
 import { searchSuggestionApi } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchCache = useSelector((store) => store.search);
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -26,17 +28,24 @@ const Header = () => {
     const data = await fetch(searchSuggestionApi + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
-    console.log(suggestions);
+    console.log(searchQuery);
+    dispatch(cacheResults({ [searchQuery]: json[1] }));
   };
 
   useEffect(() => {
-    console.log(searchQuery);
-    const timer = setTimeout(() => getSearchSuggestion(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestion();
+      }
+    }, 200);
+
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
   return (
-    <div className="sticky top-0 flex w-screen items-center justify-between bg-white px-1 py-2 sm:px-4">
+    <div className="sticky top-0 z-10 flex w-screen items-center justify-between bg-white px-1 py-2 sm:px-4">
       <div className="flex items-center gap-2">
         <button
           type="button"
