@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import VideoCard from "../../../components/VideoCard";
 import { filterApi } from "../../../utils/constants";
-import VideoCard from "./VideoCard";
 import VideoCardShimmer from "./VideoCardShimmer";
 
 const VideosContainer = () => {
@@ -34,7 +34,7 @@ const VideosContainer = () => {
   }, [pageToken]);
 
   const getVideoData = async (token) => {
-    if (loading) return;
+    if (loading || pageToken === undefined) return;
 
     setLoading(true);
     try {
@@ -59,6 +59,7 @@ const VideosContainer = () => {
       });
 
       setPageToken(json.nextPageToken);
+      console.log(pageToken);
       setNoVideos(false);
     } catch (error) {
       console.error("Failed to load videos", error);
@@ -92,8 +93,8 @@ const VideosContainer = () => {
           <VideoCard videoInfo={video} />
         </Link>
       ))}
-      {loading && (
-        <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
+      {loading && pageToken && (
+        <div className="ml-2 flex flex-wrap justify-center gap-1">
           {new Array(5).fill(0).map((_, index) => (
             <VideoCardShimmer key={index} />
           ))}

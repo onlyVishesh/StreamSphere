@@ -1,3 +1,5 @@
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -6,9 +8,7 @@ import {
   apiKey,
   formatDuration,
   timeSince,
-} from "../../../utils/constants";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+} from "../utils/constants";
 
 const VideoCard = ({ videoInfo }) => {
   const [channelProfile, setChannelProfile] = useState([]);
@@ -40,7 +40,10 @@ const VideoCard = ({ videoInfo }) => {
           </div>
         </div>
         <div className="flex gap-3">
-          <Link to="/channel" className="h-10 w-10 rounded-full">
+          <Link
+            to={`/channel?c=${channelId}`}
+            className="h-10 w-10 rounded-full"
+          >
             <img
               src={channelProfile}
               alt={channelTitle}
@@ -50,7 +53,7 @@ const VideoCard = ({ videoInfo }) => {
           <div className="w-10/12">
             <div className="line-clamp-2 font-bold">{title}</div>
             <Link
-              to="/channel"
+              to={`/channel?c=${channelId}`}
               className="line-clamp-1 flex items-center gap-1 text-nowrap transition-all duration-100 hover:font-semibold"
             >
               {channelTitle}

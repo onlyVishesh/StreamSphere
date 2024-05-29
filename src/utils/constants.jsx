@@ -32,7 +32,16 @@ export const profileApi = (channelId) =>
 export const channelApi = (channelId) =>
   `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${apiKey}`;
 
-let SI_SYMBOL = ["", "k", "M", "G", "T", "P", "E"];
+export const bannerApi = (channelId) =>
+  `https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=${channelId}&key=${apiKey}`;
+
+export const searchApi = (search) =>
+  `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${search}&key=` +
+  apiKey;
+
+export const aboutApi = "https://yt.lemnoslife.com/channels?part=about&id=";
+
+let SI_SYMBOL = ["", "k", "M", "T", "P", "E"];
 
 export const abbreviateNumber = (number) => {
   let tier = (Math.log10(Math.abs(number)) / 3) | 0;
@@ -44,7 +53,7 @@ export const abbreviateNumber = (number) => {
 
   let scaled = number / scale;
 
-  return scaled.toFixed(1) + suffix;
+  return scaled.toFixed(2) + suffix;
 };
 
 export const timeSince = (date) => {
@@ -113,4 +122,10 @@ export const formatDuration = (duration) => {
   } else {
     return `${ss}`;
   }
+};
+
+export const formatDate = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const options = { day: "2-digit", month: "long", year: "numeric" };
+  return date.toLocaleDateString("en-US", options);
 };

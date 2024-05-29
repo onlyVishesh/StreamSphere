@@ -35,6 +35,7 @@ const Watch = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  
   useEffect(() => {
     getData();
   }, []);

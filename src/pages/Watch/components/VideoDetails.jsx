@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { abbreviateNumber, timeSince } from "../../../utils/constants";
 
 const VideoDetails = (data) => {
@@ -19,19 +20,23 @@ const VideoDetails = (data) => {
       <div className="text-xl font-bold">{videoData?.snippet?.title}</div>
       <div className="flex justify-between">
         <div className="flex gap-3">
-          <img
-            src={channelData?.snippet?.thumbnails?.default?.url}
-            alt=""
-            className="h-10 w-10 rounded-full"
-          />
+          <Link to={`/channel?c=${videoData?.snippet?.channelId}`}>
+            <img
+              src={channelData?.snippet?.thumbnails?.default?.url}
+              alt=""
+              className="h-10 w-10 rounded-full"
+            />
+          </Link>
           <div className="-gap-4 flex flex-col">
-            <div className="font-semibold text-gray-800">
-              {channelData?.snippet?.title}{" "}
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="rounded-full bg-gray-700 p-0.5 text-[0.5rem] text-white"
-              />
-            </div>
+            <Link to={`/channel?c=${videoData?.snippet?.channelId}`}>
+              <div className="font-semibold text-gray-800">
+                {channelData?.snippet?.title}{" "}
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="rounded-full bg-gray-700 p-0.5 text-[0.5rem] text-white"
+                />
+              </div>
+            </Link>
             <div className="text-xs text-gray-600">
               {abbreviateNumber(channelData?.statistics?.subscriberCount)}{" "}
               subscribers

@@ -41,7 +41,7 @@ const LiveChat = () => {
           }),
         );
       },
-      Math.floor(Math.random() * 2) * 1000,
+      Math.floor(Math.random() * 4) * 1000,
     );
 
     return () => clearInterval(timer);
