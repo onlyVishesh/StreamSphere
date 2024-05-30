@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import VideoCard from "../../../components/VideoCard";
 import { filterApi } from "../../../utils/constants";
-import VideoCardShimmer from "./VideoCardShimmer";
+import VideoCardShimmer from "../../../components/VideoCardShimmer";
 
 const VideosContainer = () => {
   const [videoData, setVideoData] = useState([]);
@@ -94,11 +94,11 @@ const VideosContainer = () => {
         </Link>
       ))}
       {loading && pageToken && (
-        <div className="ml-2 flex flex-wrap justify-center gap-1">
+        <>
           {new Array(5).fill(0).map((_, index) => (
             <VideoCardShimmer key={index} />
           ))}
-        </div>
+        </>
       )}
     </div>
   );

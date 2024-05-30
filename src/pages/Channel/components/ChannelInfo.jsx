@@ -10,7 +10,7 @@ const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
       <div className="m-10 mt-0 flex w-full flex-col items-center justify-center gap-4">
         <div className="flex w-full items-center justify-center">
           <div
-            className="h-56 w-2/3 rounded-xl"
+            className="h-56 w-3/4 rounded-xl"
             style={{
               backgroundImage: `url(${bannerUrl})`,
               backgroundPosition: "center",
@@ -19,7 +19,7 @@ const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
             }}
           ></div>
         </div>
-        <div className="flex w-2/3 items-center justify-center gap-2 ">
+        <div className="flex w-3/4 items-center justify-center gap-2 ">
           <div className="w-2/12 rounded-full">
             <img
               src={channelData[0]?.snippet?.thumbnails?.medium?.url}

@@ -1,4 +1,6 @@
-export const apiKey = "AIzaSyAGlqN3bGXjlsczeJYTjdyLxySgLj0WeGw";
+// export const apiKey = "AIzaSyDy0a3x1v_ELoeXKFWdCcooB9i57RBR-ig";
+// export const apiKey = "AIzaSyCu9MaQfhjeo45tVZjLOyCL-iivPd8s55o";
+export const apiKey = "AIzaSyC5lhaV3SAXVFNbFXIfK33gD-cMslw3SAU";
 
 export const ytApi =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=" +
@@ -35,6 +37,9 @@ export const channelApi = (channelId) =>
 export const bannerApi = (channelId) =>
   `https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=${channelId}&key=${apiKey}`;
 
+export const channelVideoApi = (filter, channelId) =>
+  `https://www.googleapis.com/youtube/v3/search?order=${filter}&part=snippet&channelId=${channelId}&maxResults=25&type=video&key=${apiKey}`;
+
 export const searchApi = (search) =>
   `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${search}&key=` +
   apiKey;
@@ -53,7 +58,7 @@ export const abbreviateNumber = (number) => {
 
   let scaled = number / scale;
 
-  return scaled.toFixed(2) + suffix;
+  return scaled.toFixed(1) + suffix;
 };
 
 export const timeSince = (date) => {
@@ -128,4 +133,10 @@ export const formatDate = (timestamp) => {
   const date = new Date(timestamp * 1000);
   const options = { day: "2-digit", month: "long", year: "numeric" };
   return date.toLocaleDateString("en-US", options);
+};
+
+export const decodeHtml = (html) => {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
 };

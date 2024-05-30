@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { bannerApi, channelApi } from "../../utils/constants";
 import ChannelInfo from "./components/ChannelInfo";
+import Video from "./components/Videos";
 
 const Channel = () => {
   const [searchParams] = useSearchParams();
@@ -50,13 +51,12 @@ const Channel = () => {
 
   return (
     <div className={`flex flex-col overflow-hidden`} style={{ marginLeft }}>
-      <div>
-        <ChannelInfo
-          channelData={channelData}
-          bannerUrl={bannerUrl}
-          channelId={channelId}
-        />
-      </div>
+      <ChannelInfo
+        channelData={channelData}
+        bannerUrl={bannerUrl}
+        channelId={channelId}
+      />
+      <Video channelId={channelId}/>
     </div>
   );
 };
