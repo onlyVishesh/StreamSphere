@@ -10,6 +10,7 @@ import Subscriber from "./pages/Subscriber/Subscriber";
 import Watch from "./pages/Watch/Watch";
 import WatchLater from "./pages/WatchLater/WatchLater";
 import store from "./utils/store";
+import Trending from "./pages/Trending/Trending";
 
 {
   /**
@@ -55,6 +56,7 @@ const appRouter = createBrowserRouter([
       { path: "watch", element: <Watch /> },
       { path: "watchLater", element: <WatchLater /> },
       { path: "subscriber", element: <Subscriber /> },
+      { path: "trending", element: <Trending /> },
       { path: "channel", element: <Channel /> },
       { path: "liked", element: <Liked /> },
     ],

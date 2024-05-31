@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import VideoCard from "../../../components/VideoCard";
-import { filterApi } from "../../../utils/constants";
+import LongVideoCard from "../../../components/LongVideoCard";
+import LongVideoCardShimmer from "../../../components/LongVideoCardShimmer";
 import VideoCardShimmer from "../../../components/VideoCardShimmer";
+import { filterApi } from "../../../utils/constants";
 
-const VideosContainer = () => {
+const VideosContainer = ({ filterId }) => {
   const [videoData, setVideoData] = useState([]);
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
-  const filterId = useSelector((store) => store.filter.filterId);
 
   useEffect(() => {
     setVideoData([]);
@@ -42,6 +41,8 @@ const VideosContainer = () => {
       if (token) {
         url += `&pageToken=${token}`;
       }
+      console.log(url);
+
       const data = await fetch(url);
       const json = await data.json();
 
@@ -86,16 +87,17 @@ const VideosContainer = () => {
   }
 
   return (
-    <div className="mt-20 flex flex-wrap justify-center">
+    <div className="mt-5 flex flex-wrap justify-start gap-5">
       {videoData.map((video) => (
         <Link to={`/watch?v=${video.id}`} key={video.id}>
-          <VideoCard videoInfo={video} />
+          <LongVideoCard data={video} />
         </Link>
       ))}
+
       {loading && pageToken && (
         <>
           {new Array(5).fill(0).map((_, index) => (
-            <VideoCardShimmer key={index} />
+            <LongVideoCardShimmer key={index} />
           ))}
         </>
       )}

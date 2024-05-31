@@ -3,22 +3,22 @@
 export const apiKey = "AIzaSyC5lhaV3SAXVFNbFXIfK33gD-cMslw3SAU";
 
 export const ytApi =
-  "https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=" +
+  "https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=IN&key=" +
   apiKey;
 
 export const filters =
-  "https://www.googleapis.com/youtube/v3/videoCategories?regionCode=US&key=" +
+  "https://www.googleapis.com/youtube/v3/videoCategories?regionCode=IN&key=" +
   apiKey;
 
 export const searchSuggestionApi =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const filterApi = (filterId) =>
-  `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=50&key=` +
+  `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=25&key=` +
   apiKey;
 
 export const commentsApi = (videoId) =>
-  `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&textFormat=plainText&videoId=${videoId}&maxResults=50&key=` +
+  `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&textFormat=plainText&videoId=${videoId}&maxResults=25&key=` +
   apiKey;
 
 export const replyApi = (commentId) =>
@@ -41,7 +41,7 @@ export const channelVideoApi = (filter, channelId) =>
   `https://www.googleapis.com/youtube/v3/search?order=${filter}&part=snippet&channelId=${channelId}&maxResults=25&type=video&key=${apiKey}`;
 
 export const searchApi = (search) =>
-  `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${search}&key=` +
+  `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${search}&key=` +
   apiKey;
 
 export const aboutApi = "https://yt.lemnoslife.com/channels?part=about&id=";

@@ -121,18 +121,20 @@ const Sidebar = () => {
               History
             </li>
             <Link to="/watchLater">
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faClock} className="size-6 text-black" />
-              Watch later
-            </li></Link>
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faClock} className="size-6 text-black" />
+                Watch later
+              </li>
+            </Link>
             <Link to="/liked">
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faThumbsUp}
-                className="size-6 text-black"
-              />
-              Liked Videos
-            </li></Link>
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faThumbsUp}
+                  className="size-6 text-black"
+                />
+                Liked Videos
+              </li>
+            </Link>
           </ul>
         </div>
         <hr />
@@ -140,10 +142,12 @@ const Sidebar = () => {
         <div className="">
           <h2 className="px-2 pb-2 font-medium text-opacity-90 ">Explore</h2>
           <ul>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faFire} className="size-6 text-black" />
-              Trading
-            </li>
+            <Link to="trending">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faFire} className="size-6 text-black" />
+                Trending
+              </li>
+            </Link>
 
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <FontAwesomeIcon
