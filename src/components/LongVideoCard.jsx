@@ -18,7 +18,7 @@ const LongVideoCard = ({ data }) => {
           src={snippet?.thumbnails?.medium?.url}
           className="h-full w-full rounded-lg object-cover"
         />
-        <div className="absolute bottom-1 right-2 z-10 rounded-md bg-gray-900 px-1 py-0.5 text-xs text-white">
+        <div className="absolute bottom-1 right-2 z-[5] rounded-md bg-gray-900 px-1 py-0.5 text-xs text-white">
           {formatDuration(contentDetails.duration)}
         </div>
       </div>

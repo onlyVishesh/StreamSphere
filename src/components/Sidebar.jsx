@@ -156,14 +156,18 @@ const Sidebar = () => {
               />
               Shopping
             </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faMusic} className="size-6 text-black" />
-              Music
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faFilm} className="size-6 text-black" />{" "}
-              Films
-            </li>
+            <Link to="music">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faMusic} className="size-6 text-black" />
+                Music
+              </li>
+            </Link>
+            <Link to="films">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faFilm} className="size-6 text-black" />
+                Films
+              </li>
+            </Link>
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <FontAwesomeIcon
                 icon={faSatelliteDish}
@@ -171,10 +175,15 @@ const Sidebar = () => {
               />
               Live
             </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faGamepad} className="size-6 text-black" />
-              Gaming
-            </li>
+            <Link to="gaming">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faGamepad}
+                  className="size-6 text-black"
+                />
+                Gaming
+              </li>
+            </Link>
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <FontAwesomeIcon
                 icon={faNewspaper}
