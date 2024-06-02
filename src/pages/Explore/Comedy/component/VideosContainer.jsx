@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import LongVideoCard from "../../../components/LongVideoCard";
-import LongVideoCardShimmer from "../../../components/LongVideoCardShimmer";
-import VideoCardShimmer from "../../../components/VideoCardShimmer";
-import { filterApi } from "../../../utils/constants";
+import LongVideoCard from "../../../../components/LongVideoCard";
+import LongVideoCardShimmer from "../../../../components/LongVideoCardShimmer";
+import VideoCardShimmer from "../../../../components/VideoCardShimmer";
+import { filterApi } from "../../../../utils/constants";
 
 const VideosContainer = ({ filterId }) => {
   const [videoData, setVideoData] = useState([]);
@@ -78,9 +78,9 @@ const VideosContainer = ({ filterId }) => {
 
   if (videoData.length === 0 && loading) {
     return (
-      <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
+      <div className="mt-5 flex flex-wrap justify-start gap-1">
         {new Array(20).fill(0).map((_, index) => (
-          <VideoCardShimmer key={index} />
+          <LongVideoCardShimmer key={index} />
         ))}
       </div>
     );

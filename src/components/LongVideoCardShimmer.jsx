@@ -1,7 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-
 const LongVideoCardShimmer = () => {
   return (
     <div className="flex w-5/6 gap-5">

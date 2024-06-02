@@ -4,6 +4,7 @@ import {
   faCircleUser,
   faClock,
   faClockRotateLeft,
+  faFaceLaughSquint,
   faFilm,
   faFire,
   faFlag,
@@ -14,9 +15,7 @@ import {
   faMessage,
   faMusic,
   faNewspaper,
-  faPodcast,
   faSatelliteDish,
-  faShirt,
   faThumbsUp,
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
@@ -148,14 +147,15 @@ const Sidebar = () => {
                 Trending
               </li>
             </Link>
-
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faBagShopping}
-                className="size-6 text-black"
-              />
-              Shopping
-            </li>
+            <Link to="entertainment">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faBagShopping}
+                  className="size-6 text-black"
+                />
+                Entertainment
+              </li>
+            </Link>
             <Link to="music">
               <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
                 <FontAwesomeIcon icon={faMusic} className="size-6 text-black" />
@@ -168,13 +168,6 @@ const Sidebar = () => {
                 Films
               </li>
             </Link>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faSatelliteDish}
-                className="size-6 text-black"
-              />
-              Live
-            </li>
             <Link to="gaming">
               <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
                 <FontAwesomeIcon
@@ -184,32 +177,33 @@ const Sidebar = () => {
                 Gaming
               </li>
             </Link>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faNewspaper}
-                className="size-6 text-black"
-              />
-              News
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faTrophy} className="size-6 text-black" />
-              Sport
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faLightbulb}
-                className="size-6 text-black"
-              />
-              Courses
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faShirt} className="size-6 text-black" />
-              Fashion & beauty
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faPodcast} className="size-6 text-black" />
-              Podcasts
-            </li>
+            <Link to="news">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faNewspaper}
+                  className="size-6 text-black"
+                />
+                News
+              </li>
+            </Link>
+            <Link to="sports">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faTrophy}
+                  className="size-6 text-black"
+                />
+                Sport
+              </li>
+            </Link>
+            <Link to="comedy">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faFaceLaughSquint}
+                  className="size-6 text-black"
+                />
+                Comedy
+              </li>
+            </Link>
           </ul>
           <hr />
         </div>

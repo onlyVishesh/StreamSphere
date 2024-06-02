@@ -4,13 +4,20 @@ import "./App.css";
 import Header from "./components/Header";
 import MainContainer from "./components/MainContainer";
 import Channel from "./pages/Channel/Channel";
+import Comedy from "./pages/Explore/Comedy/Comedy";
+import Entertainment from "./pages/Explore/Entertainment/Entertainment";
+import Films from "./pages/Explore/Films/Films";
+import Gaming from "./pages/Explore/Gaming/Gaming";
+import Music from "./pages/Explore/Music/Music";
+import News from "./pages/Explore/News/News";
+import Sports from "./pages/Explore/Sports/Sports";
+import Trending from "./pages/Explore/Trending/Trending";
 import Home from "./pages/Home/Home";
 import Liked from "./pages/Liked/Liked";
 import Subscriber from "./pages/Subscriber/Subscriber";
 import Watch from "./pages/Watch/Watch";
 import WatchLater from "./pages/WatchLater/WatchLater";
 import store from "./utils/store";
-import Trending from "./pages/Trending/Trending";
 
 {
   /**
@@ -57,6 +64,13 @@ const appRouter = createBrowserRouter([
       { path: "watchLater", element: <WatchLater /> },
       { path: "subscriber", element: <Subscriber /> },
       { path: "trending", element: <Trending /> },
+      { path: "entertainment", element: <Entertainment /> },
+      { path: "music", element: <Music /> },
+      { path: "films", element: <Films /> },
+      { path: "gaming", element: <Gaming /> },
+      { path: "news", element: <News /> },
+      { path: "sports", element: <Sports /> },
+      { path: "comedy", element: <Comedy /> },
       { path: "channel", element: <Channel /> },
       { path: "liked", element: <Liked /> },
     ],
