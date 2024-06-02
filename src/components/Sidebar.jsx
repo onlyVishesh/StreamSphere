@@ -11,11 +11,9 @@ import {
   faGamepad,
   faGear,
   faHouse,
-  faLightbulb,
   faMessage,
   faMusic,
   faNewspaper,
-  faSatelliteDish,
   faThumbsUp,
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
