@@ -11,7 +11,7 @@ export const filters =
   apiKey;
 
 export const searchSuggestionApi =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://youtube-search-server.onrender.com/api/youtube-suggestions?q=";
 
 export const filterApi = (filterId) =>
   `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=25&key=` +

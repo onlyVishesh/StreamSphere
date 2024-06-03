@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../../utils/appSlice";
 import { channelApi, videoApi } from "../../utils/constants";
 import Comments from "./components/Comments";
+import LiveChat from "./components/LiveChat";
 import Video from "./components/Video";
 import VideoDetails from "./components/VideoDetails";
-import LiveChat from "./components/LiveChat";
 
 const Watch = () => {
   const [searchParams] = useSearchParams();
@@ -14,7 +14,6 @@ const Watch = () => {
   const [videoData, setVideoData] = useState([]);
   const [channelData, setChannelData] = useState([]);
 
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeMenu());
@@ -23,19 +22,6 @@ const Watch = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  
   useEffect(() => {
     getData();
   }, []);
@@ -59,15 +45,8 @@ const Watch = () => {
     setChannelData(...json.items);
   };
 
-  const marginLeft =
-    isMenuOpen && windowWidth > 1023
-      ? "15rem"
-      : windowWidth < 640
-        ? "3rem"
-        : "5rem";
-  console.log(videoId);
   return (
-    <div className={`m-5 flex gap-5 overflow-hidden`} style={{ marginLeft }}>
+    <div>
       <div className="ml-5 flex flex-col gap-3 lg:w-9/12">
         <Video data={[videoId, videoData?.snippet?.title]} />
         <VideoDetails data={[videoData, channelData]} />

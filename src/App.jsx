@@ -1,7 +1,6 @@
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
 import MainContainer from "./components/MainContainer";
 import Channel from "./pages/Channel/Channel";
 import Comedy from "./pages/Explore/Comedy/Comedy";
@@ -14,6 +13,7 @@ import Sports from "./pages/Explore/Sports/Sports";
 import Trending from "./pages/Explore/Trending/Trending";
 import Home from "./pages/Home/Home";
 import Liked from "./pages/Liked/Liked";
+import Search from "./pages/Search/Search";
 import Subscriber from "./pages/Subscriber/Subscriber";
 import Watch from "./pages/Watch/Watch";
 import WatchLater from "./pages/WatchLater/WatchLater";
@@ -63,6 +63,7 @@ const appRouter = createBrowserRouter([
       { path: "watch", element: <Watch /> },
       { path: "watchLater", element: <WatchLater /> },
       { path: "subscriber", element: <Subscriber /> },
+      { path: "search", element: <Search /> },
       { path: "trending", element: <Trending /> },
       { path: "entertainment", element: <Entertainment /> },
       { path: "music", element: <Music /> },
@@ -80,7 +81,6 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <Header />
       <RouterProvider router={appRouter} />
     </Provider>
   );

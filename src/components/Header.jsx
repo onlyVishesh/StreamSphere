@@ -8,6 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import logo from "../assets/youtube.svg";
 import { toggleMenu } from "../utils/appSlice";
 import { searchSuggestionApi } from "../utils/constants";
@@ -26,6 +27,7 @@ const Header = () => {
 
   const getSearchSuggestion = async () => {
     const data = await fetch(searchSuggestionApi + searchQuery);
+    console.log(data);
     const json = await data.json();
     setSuggestions(json[1]);
     console.log(searchQuery);
@@ -44,6 +46,11 @@ const Header = () => {
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery(suggestion);
+    setShowSuggestions(false);
+  };
+
   return (
     <div className="sticky top-0 z-10 flex w-screen items-center justify-between bg-white px-1 py-2 sm:px-4">
       <div className="flex items-center gap-2">
@@ -57,14 +64,14 @@ const Header = () => {
             className="text-sm hover:cursor-pointer md:text-base lg:text-lg"
           />
         </button>
-        <a href="/">
+        <Link to="/">
           <figcaption className="flex content-center items-center gap-1 hover:cursor-pointer">
             <img src={logo} alt="YouTube" className="w-6 md:w-8" />
             <p className="hidden text-sm font-semibold -tracking-[1.5px] 2xs:block sm:text-xl">
               YouTube
             </p>
           </figcaption>
-        </a>
+        </Link>
       </div>
       <div>
         <div className="flex items-center gap-3">
@@ -82,15 +89,17 @@ const Header = () => {
                 setShowSuggestions(false);
               }}
             />
-            <button
-              type="button"
-              className="flex h-6 w-10 items-center justify-center rounded-full rounded-l-none border-y-0 border-l-2 border-r-0 border-solid border-gray-200 bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9 sm:px-8"
-            >
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className="text-sm text-slate-800 sm:text-lg "
-              />
-            </button>
+            <Link to={`/search?q=${searchQuery}`}>
+              <button
+                type="button"
+                className="flex h-6 w-10 items-center justify-center rounded-full rounded-l-none border-y-0 border-l-2 border-r-0 border-solid border-gray-200 bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9 sm:px-8"
+              >
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="text-sm text-slate-800 sm:text-lg "
+                />
+              </button>
+            </Link>
           </div>
           <button
             type="button"
@@ -108,6 +117,7 @@ const Header = () => {
               <li
                 className="flex items-center gap-2 rounded-md px-2 hover:cursor-pointer hover:bg-gray-200"
                 key={suggestion}
+                onMouseDown={() => handleSuggestionClick(suggestion)}
               >
                 <FontAwesomeIcon
                   icon={faMagnifyingGlass}
