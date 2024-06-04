@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import VideoCardShimmer from "./VideoCardShimmer";
+import { Link } from "react-router-dom";
+import ShortVideoCard from "../../../components/ShortVideoCard";
+import ShortVideoCardShimmer from "../../../components/ShortVideoCardShimmer";
 import { channelVideoApi } from "../../../utils/constants";
-import VideoCard from "./VideoCard";
 
 const Video = ({ channelId }) => {
   const [filter, setFilter] = useState("date");
@@ -58,7 +59,6 @@ const Video = ({ channelId }) => {
 
       setPageToken(json.nextPageToken);
       setNoVideos(false);
-      console.log(videoData);
     } catch (error) {
       console.error("Failed to load videos", error);
     } finally {
@@ -87,7 +87,7 @@ const Video = ({ channelId }) => {
           </div>
           <div className="flex flex-wrap justify-center">
             {new Array(20).fill(0).map((_, index) => (
-              <VideoCardShimmer key={index} />
+              <ShortVideoCardShimmer key={index} />
             ))}
           </div>
         </div>
@@ -115,12 +115,14 @@ const Video = ({ channelId }) => {
         </div>
         <div className="flex flex-wrap justify-center">
           {videoData.map((video) => (
-            <VideoCard videoInfo={video} key={video.id.videoId} />
+            <Link to={`/watch?v=${video.id.videoId}`} key={video.id.videoId}>
+              <ShortVideoCard videoInfo={video} />
+            </Link>
           ))}
           {loading && pageToken && (
             <>
               {new Array(8).fill(0).map((_, index) => (
-                <VideoCardShimmer key={index} />
+                <ShortVideoCardShimmer key={index} />
               ))}
             </>
           )}

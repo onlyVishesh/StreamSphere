@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import VideoCard from "../../../components/VideoCard";
-import { filterApi } from "../../../utils/constants";
 import VideoCardShimmer from "../../../components/VideoCardShimmer";
+import { filterApi } from "../../../utils/constants";
 
 const VideosContainer = () => {
   const [videoData, setVideoData] = useState([]);

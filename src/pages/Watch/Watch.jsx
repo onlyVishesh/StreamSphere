@@ -35,7 +35,6 @@ const Watch = () => {
   useEffect(() => {
     if (videoData) {
       getChannelData(videoData?.snippet?.channelId);
-      console.log(videoData);
     }
   }, [videoData]);
 

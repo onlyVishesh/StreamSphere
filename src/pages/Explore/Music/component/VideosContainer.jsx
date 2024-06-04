@@ -41,8 +41,6 @@ const VideosContainer = ({ filterId }) => {
       if (token) {
         url += `&pageToken=${token}`;
       }
-      console.log(url);
-
       const data = await fetch(url);
       const json = await data.json();
 

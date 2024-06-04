@@ -1,4 +1,4 @@
-const VideoCardShimmer = () => {
+const ShortVideoCardShimmer = () => {
   return (
     <>
       <div className="m-0.5 flex w-[19.3rem] cursor-pointer flex-col gap-1 p-2 ">
@@ -17,4 +17,4 @@ const VideoCardShimmer = () => {
   );
 };
 
-export default VideoCardShimmer;
+export default ShortVideoCardShimmer;

@@ -26,7 +26,6 @@ const AboutModel = ({ open, onClose, channelId }) => {
     const data = await fetch(aboutApi + channelId);
     const json = await data.json();
     setAboutData(json.items[0]);
-    console.log(aboutData);
   };
 
   if (!open) return null;

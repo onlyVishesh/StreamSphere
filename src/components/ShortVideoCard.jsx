@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import { decodeHtml, timeSince } from "../../../utils/constants";
+import { decodeHtml, timeSince } from "../utils/constants";
 
-const VideoCard = ({ videoInfo }) => {
+const ShortVideoCard = ({ videoInfo }) => {
   const { snippet } = videoInfo;
   const { thumbnails, title, publishedAt } = snippet;
 
@@ -24,8 +24,8 @@ const VideoCard = ({ videoInfo }) => {
   );
 };
 
-VideoCard.propTypes = {
+ShortVideoCard.propTypes = {
   videoInfo: PropTypes.object.isRequired,
 };
 
-export default VideoCard;
+export default ShortVideoCard;

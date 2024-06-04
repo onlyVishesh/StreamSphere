@@ -27,10 +27,8 @@ const Header = () => {
 
   const getSearchSuggestion = async () => {
     const data = await fetch(searchSuggestionApi + searchQuery);
-    console.log(data);
     const json = await data.json();
     setSuggestions(json[1]);
-    console.log(searchQuery);
     dispatch(cacheResults({ [searchQuery]: json[1] }));
   };
 
