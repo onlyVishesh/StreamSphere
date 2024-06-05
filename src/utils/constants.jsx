@@ -1,6 +1,7 @@
 // export const apiKey = "AIzaSyDy0a3x1v_ELoeXKFWdCcooB9i57RBR-ig";
 // export const apiKey = "AIzaSyCu9MaQfhjeo45tVZjLOyCL-iivPd8s55o";
-export const apiKey = "AIzaSyC5lhaV3SAXVFNbFXIfK33gD-cMslw3SAU";
+// export const apiKey = "AIzaSyC5lhaV3SAXVFNbFXIfK33gD-cMslw3SAU";
+export const apiKey = "AIzaSyDAx7BXFlwui2C3S6sPy6o05OQezd9_CtM";
 
 export const ytApi =
   "https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=IN&key=" +

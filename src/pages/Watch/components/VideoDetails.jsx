@@ -1,6 +1,6 @@
 import {
+  faBookmark,
   faCheck,
-  faDownload,
   faHandHoldingDollar,
   faShare,
   faThumbsDown,
@@ -8,12 +8,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { abbreviateNumber, timeSince } from "../../../utils/constants";
+import {
+  addWatchLater,
+  removeWatchLater,
+} from "../../../utils/watchLaterSlice";
 
 const VideoDetails = (data) => {
   const [videoData, channelData] = data.data;
   const [openDescription, setOpenDescription] = useState(false);
+  const watchLater = useSelector((store) => store.watchLater);
+  const dispatch = useDispatch();
+
+  const addVideo = () => {
+    if (!watchLater[videoData.id]) {
+      dispatch(addWatchLater({ [videoData.id]: videoData }));
+    } else {
+      dispatch(removeWatchLater(videoData.id));
+    }
+  };
 
   return (
     <>
@@ -60,8 +75,14 @@ const VideoDetails = (data) => {
           <button className="flex items-center justify-center gap-2 rounded-full border-l-2 border-gray-900 bg-gray-100 px-3 py-2 font-semibold text-gray-800 hover:bg-gray-200 focus:bg-gray-200">
             <FontAwesomeIcon icon={faShare} /> Share
           </button>
-          <button className="flex items-center justify-center gap-2 rounded-full border-l-2 border-gray-900 bg-gray-100 px-3 py-2 font-semibold text-gray-800 hover:bg-gray-200 focus:bg-gray-200">
-            <FontAwesomeIcon icon={faDownload} /> Download
+          <button
+            className={`flex items-center justify-center gap-2 rounded-full border-l-2 border-gray-900 px-3 py-2 font-semibold   ${!watchLater[videoData.id] ? "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:bg-gray-200" : "bg-gray-800 text-gray-100 hover:bg-gray-700 focus:bg-gray-700"}`}
+            onClick={() => {
+              addVideo();
+            }}
+          >
+            <FontAwesomeIcon icon={faBookmark} />{" "}
+            {!watchLater[videoData.id] ? "Save" : "Saved"}
           </button>
           <button className="flex items-center justify-center gap-2 rounded-full border-l-2 border-gray-900 bg-gray-100 px-3 py-2 font-semibold text-gray-800 hover:bg-gray-200 focus:bg-gray-200">
             <FontAwesomeIcon icon={faHandHoldingDollar} /> Thanks

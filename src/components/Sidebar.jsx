@@ -45,10 +45,6 @@ const Sidebar = () => {
             />
             Home
           </Link>
-          <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-            <img src={shorts} alt="shorts" className="size-4 sm:size-6" />
-            Shorts
-          </li>
           <Link to="/subscribe">
             <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <img
@@ -61,10 +57,10 @@ const Sidebar = () => {
           </Link>
           <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
             <FontAwesomeIcon
-              icon={faCircleUser}
-              className="size-4 text-black sm:size-6"
+              icon={faClockRotateLeft}
+              className="size-6 text-black"
             />
-            You
+            History
           </li>
         </ul>
       </div>
@@ -81,10 +77,6 @@ const Sidebar = () => {
               <FontAwesomeIcon icon={faHouse} className="size-6 text-black" />
               Home
             </Link>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <img src={shorts} alt="shorts" className="size-6" />
-              Shorts
-            </li>
             <Link to="/subscriber">
               <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
                 <img
@@ -103,13 +95,6 @@ const Sidebar = () => {
             You
           </h2>
           <ul>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faCircleUser}
-                className="size-6 text-black"
-              />
-              Your channel
-            </li>
             <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <FontAwesomeIcon
                 icon={faClockRotateLeft}

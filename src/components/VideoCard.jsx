@@ -1,7 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   abbreviateNumber,
@@ -9,6 +9,8 @@ import {
   formatDuration,
   timeSince,
 } from "../utils/constants";
+import { addWatchLater, removeWatchLater } from "../utils/watchLaterSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const VideoCard = ({ videoInfo }) => {
   const [channelProfile, setChannelProfile] = useState([]);
@@ -17,6 +19,23 @@ const VideoCard = ({ videoInfo }) => {
   const { thumbnails, title, channelId, channelTitle, publishedAt } = snippet;
   const { viewCount } = statistics;
   const { duration } = contentDetails;
+
+  const [isSaveVisible, setIsSaveVisible] = useState(false);
+  const saveRef = useRef(null);
+  const watchLater = useSelector((store) => store.watchLater);
+  const dispatch = useDispatch();
+
+  const toggleSave = () => {
+    setIsSaveVisible(!isSaveVisible);
+  };
+
+  const addVideo = () => {
+    if (!watchLater[videoInfo.id]) {
+      dispatch(addWatchLater({ [videoInfo.id]: videoInfo }));
+    } else {
+      dispatch(removeWatchLater(videoInfo.id));
+    }
+  };
 
   useEffect(() => {
     channelProfileURL(channelId);
@@ -32,7 +51,7 @@ const VideoCard = ({ videoInfo }) => {
 
   return (
     <>
-      <div className="m-1 flex w-80 cursor-pointer flex-col gap-1 p-2">
+      <div className="group m-1 flex w-80 cursor-pointer flex-col gap-1 p-2">
         <div className="relative -z-10">
           <img src={thumbnails.medium.url} alt="" className=" rounded-lg" />
           <div className="absolute bottom-1 right-2 z-10 rounded-md bg-gray-900 px-1 py-0.5 text-xs text-white">
@@ -68,14 +87,30 @@ const VideoCard = ({ videoInfo }) => {
               <div>{timeSince(new Date(publishedAt))}</div>
             </div>
           </div>
+          <div
+            className="invisible relative h-6 rounded-full hover:cursor-pointer hover:bg-slate-100 group-hover:visible"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleSave();
+            }}
+            ref={saveRef}
+          >
+            &#8942;
+            {isSaveVisible && (
+              <div
+                className={` absolute flex items-center justify-center gap-2 rounded-full border-gray-900 px-3 py-2 font-semibold ${!watchLater[videoInfo.id] ? "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:bg-gray-200" : "bg-gray-800 text-gray-100 hover:bg-gray-700 focus:bg-gray-700"}`}
+                onClick={() => {
+                  addVideo();
+                }}
+              >
+                {!watchLater[videoInfo.id] ? "Save" : "Saved"}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>
   );
-};
-
-VideoCard.propTypes = {
-  videoInfo: PropTypes.object.isRequired,
 };
 
 export default VideoCard;
