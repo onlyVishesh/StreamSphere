@@ -1,7 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   abbreviateNumber,
@@ -10,7 +10,6 @@ import {
   timeSince,
 } from "../utils/constants";
 import { addWatchLater, removeWatchLater } from "../utils/watchLaterSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 const VideoCard = ({ videoInfo }) => {
   const [channelProfile, setChannelProfile] = useState([]);

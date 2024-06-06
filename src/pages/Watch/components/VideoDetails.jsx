@@ -12,6 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { abbreviateNumber, timeSince } from "../../../utils/constants";
 import {
+  dislikeItem,
+  likeItem,
+  removeDislike,
+  removeLike,
+} from "../../../utils/likeDislikeSlice";
+import {
   addWatchLater,
   removeWatchLater,
 } from "../../../utils/watchLaterSlice";
@@ -20,6 +26,8 @@ const VideoDetails = (data) => {
   const [videoData, channelData] = data.data;
   const [openDescription, setOpenDescription] = useState(false);
   const watchLater = useSelector((store) => store.watchLater);
+  const liked = useSelector((store) => store.likeDislike.liked);
+  const disliked = useSelector((store) => store.likeDislike.disliked);
   const dispatch = useDispatch();
 
   const addVideo = () => {
@@ -63,12 +71,30 @@ const VideoDetails = (data) => {
         </div>
         <div className="flex gap-2">
           <div className="flex ">
-            <button className="flex items-center justify-center gap-2 rounded-l-full border-l-2 border-gray-900 bg-gray-100 px-3 py-2 font-semibold text-gray-800 hover:bg-gray-200 focus:bg-gray-200">
+            <button
+              className={`flex items-center justify-center gap-2 rounded-l-full border-l-2 border-gray-900 px-3 py-2 font-semibold ${liked[videoData.id] ? "bg-gray-800 text-gray-100 hover:bg-gray-700 focus:bg-gray-700" : "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:bg-gray-200"}`}
+              onClick={() => {
+                {
+                  liked[videoData.id]
+                    ? dispatch(removeLike(videoData.id))
+                    : dispatch(likeItem({ [videoData.id]: videoData }));
+                }
+              }}
+            >
               <FontAwesomeIcon icon={faThumbsUp} />
               {abbreviateNumber(videoData?.statistics?.likeCount)}
             </button>{" "}
             <div className="w-0.5  bg-gray-300"></div>
-            <button className="flex items-center justify-center gap-2 rounded-r-full border-l-2 border-gray-700 bg-gray-100 px-3 py-2 font-semibold text-gray-800 hover:bg-gray-200 focus:bg-gray-200">
+            <button
+              className={`flex items-center justify-center gap-2 rounded-r-full border-l-2 border-gray-900 px-3 py-2 font-semibold ${disliked[videoData.id] ? "bg-gray-800 text-gray-100 hover:bg-gray-700 focus:bg-gray-700" : "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:bg-gray-200"}`}
+              onClick={() => {
+                {
+                  disliked[videoData.id]
+                    ? dispatch(removeDislike(videoData.id))
+                    : dispatch(dislikeItem({ [videoData.id]: videoData }));
+                }
+              }}
+            >
               <FontAwesomeIcon icon={faThumbsDown} />
             </button>
           </div>

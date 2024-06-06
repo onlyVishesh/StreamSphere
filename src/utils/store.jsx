@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appSlice from "./appSlice";
-import filterSlice from "./filterSlice";
-import searchSlice from "./searchSlice";
 import chatSlice from "./chatSlice";
+import filterSlice from "./filterSlice";
+import likeDislikeSlice from "./likeDislikeSlice";
+import searchSlice from "./searchSlice";
 import watchLaterSlice from "./watchLaterSlice";
 const store = configureStore({
   reducer: {
@@ -10,7 +11,8 @@ const store = configureStore({
     filter: filterSlice,
     search: searchSlice,
     chat: chatSlice,
-    watchLater: watchLaterSlice
+    watchLater: watchLaterSlice,
+    likeDislike: likeDislikeSlice,
   },
 });
 

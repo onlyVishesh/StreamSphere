@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
+import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { decodeHtml, timeSince } from "../utils/constants";
 import { addWatchLater, removeWatchLater } from "../utils/watchLaterSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useRef, useState } from "react";
 
 const ShortVideoCard = ({ videoInfo }) => {
   const { snippet } = videoInfo;

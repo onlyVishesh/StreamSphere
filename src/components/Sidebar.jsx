@@ -1,7 +1,6 @@
 import {
   faBagShopping,
   faCircleQuestion,
-  faCircleUser,
   faClock,
   faClockRotateLeft,
   faFaceLaughSquint,
@@ -18,7 +17,6 @@ import {
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import shorts from "../assets/shorts.svg";
 import subscription from "../assets/subscription.svg";
 import youtube from "../assets/youtube.svg";
 import kids from "../assets/ytKids.svg";
@@ -58,7 +56,7 @@ const Sidebar = () => {
           <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
             <FontAwesomeIcon
               icon={faClockRotateLeft}
-              className="size-6 text-black"
+              className="size-4 text-black sm:size-6"
             />
             History
           </li>

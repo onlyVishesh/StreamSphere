@@ -1,5 +1,42 @@
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import LongVideoCard from "../../components/LongVideoCard";
+
 const Liked = () => {
-  return <div>Liked</div>;
+  const liked = useSelector((store) => store.likeDislike.liked);
+  console.log(liked);
+  const isEmpty = Object.keys(liked).length === 0;
+
+  return (
+    <div className="mt-10 flex w-full justify-center">
+      <div className="w-3/4">
+        <div className="flex items-center gap-3 font-bold">
+          <img
+            alt=""
+            src="https://www.youtube.com/img/trending/avatar/trending.png"
+            className="w-16 rounded-full"
+          />
+          <span className="text-4xl">Liked Videos</span>
+        </div>
+        <div className="mt-5 flex flex-wrap justify-start gap-5">
+          {isEmpty ? (
+            <div className="text-xl">
+              You have not Liked any video.{" "}
+              <Link to="/" className="text-blue-500">
+                Like Video Now
+              </Link>
+            </div>
+          ) : (
+            Object.values(liked).map((video) => (
+              <Link to={`/watch?v=${video[0].id}`} key={video[0].id}>
+                <LongVideoCard data={video[0]} />
+              </Link>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Liked;

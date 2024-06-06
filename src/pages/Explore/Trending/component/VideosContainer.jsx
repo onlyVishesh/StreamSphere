@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LongVideoCard from "../../../../components/LongVideoCard";
 import LongVideoCardShimmer from "../../../../components/LongVideoCardShimmer";
-import VideoCardShimmer from "../../../../components/VideoCardShimmer";
 import { filterApi } from "../../../../utils/constants";
 
 const VideosContainer = ({ filterId }) => {
@@ -16,6 +15,7 @@ const VideosContainer = ({ filterId }) => {
     setPageToken(null);
     setNoVideos(false);
     getVideoData();
+    console.log(videoData);
   }, [filterId]);
 
   useEffect(() => {

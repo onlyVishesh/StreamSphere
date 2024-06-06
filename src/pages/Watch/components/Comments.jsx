@@ -1,7 +1,6 @@
 import {
   faAngleDown,
   faAngleUp,
-  faArrowsTurnRight,
   faArrowTurnUp,
   faArrowUpWideShort,
 } from "@fortawesome/free-solid-svg-icons";
