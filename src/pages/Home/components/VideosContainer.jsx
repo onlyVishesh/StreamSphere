@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import VideoCard from "../../../components/VideoCard";
 import VideoCardShimmer from "../../../components/VideoCardShimmer";
 import { filterApi } from "../../../utils/constants";
+import { addHistory, removeHistory } from "../../../utils/historySlice";
 
 const VideosContainer = () => {
   const [videoData, setVideoData] = useState([]);
@@ -11,6 +12,8 @@ const VideosContainer = () => {
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
   const filterId = useSelector((store) => store.filter.filterId);
+  const dispatch = useDispatch();
+  const history = useSelector((store) => store.history);
 
   useEffect(() => {
     setVideoData([]);
@@ -88,7 +91,20 @@ const VideosContainer = () => {
   return (
     <div className="mt-20 flex flex-wrap justify-center">
       {videoData.map((video) => (
-        <Link to={`/watch?v=${video.id}`} key={video.id}>
+        <Link
+          to={`/watch?v=${video.id}`}
+          key={video.id}
+          onClick={() => {
+            if(history[video.id]){
+              dispatch(removeHistory(video.id))
+              dispatch(addHistory({ [video.id]: video }));
+            }
+            else{
+              dispatch(addHistory({ [video.id]: video }));
+
+            }
+          }}
+        >
           <VideoCard videoInfo={video} />
         </Link>
       ))}

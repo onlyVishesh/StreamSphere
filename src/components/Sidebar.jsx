@@ -53,13 +53,15 @@ const Sidebar = () => {
               Subscriptions
             </li>
           </Link>
-          <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-            <FontAwesomeIcon
-              icon={faClockRotateLeft}
-              className="size-4 text-black sm:size-6"
-            />
-            History
-          </li>
+          <Link to="history">
+            <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+              <FontAwesomeIcon
+                icon={faClockRotateLeft}
+                className="size-4 text-black sm:size-6"
+              />
+              History
+            </li>
+          </Link>
         </ul>
       </div>
     </div>
@@ -93,13 +95,15 @@ const Sidebar = () => {
             You
           </h2>
           <ul>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon
-                icon={faClockRotateLeft}
-                className="size-6 text-black"
-              />
-              History
-            </li>
+            <Link to="history">
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon
+                  icon={faClockRotateLeft}
+                  className="size-6 text-black"
+                />
+                History
+              </li>
+            </Link>
             <Link to="/watchLater">
               <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
                 <FontAwesomeIcon icon={faClock} className="size-6 text-black" />

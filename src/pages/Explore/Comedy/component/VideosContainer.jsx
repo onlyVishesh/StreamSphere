@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LongVideoCard from "../../../../components/LongVideoCard";
 import LongVideoCardShimmer from "../../../../components/LongVideoCardShimmer";
-import VideoCardShimmer from "../../../../components/VideoCardShimmer";
 import { filterApi } from "../../../../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addHistory, removeHistory } from "../../../../utils/historySlice";
 
 const VideosContainer = ({ filterId }) => {
   const [videoData, setVideoData] = useState([]);
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
+  const dispatch = useDispatch();
+  const history = useSelector((store) => store.history);
 
   useEffect(() => {
     setVideoData([]);
@@ -88,7 +91,18 @@ const VideosContainer = ({ filterId }) => {
   return (
     <div className="mt-5 flex flex-wrap justify-start gap-5">
       {videoData.map((video) => (
-        <Link to={`/watch?v=${video.id}`} key={video.id}>
+        <Link
+          to={`/watch?v=${video.id}`}
+          key={video.id}
+          onClick={() => {
+            if (history[video.id]) {
+              dispatch(removeHistory(video.id));
+              dispatch(addHistory({ [video.id]: video }));
+            } else {
+              dispatch(addHistory({ [video.id]: video }));
+            }
+          }}
+        >
           <LongVideoCard data={video} />
         </Link>
       ))}

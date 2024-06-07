@@ -102,7 +102,10 @@ const Search = () => {
                   </Link>
                 )}
                 {item.id.kind === "youtube#channel" && (
-                  <Link to={`/channel?c=${item.id.channelId}`} key={item.id.channelId}>
+                  <Link
+                    to={`/channel?c=${item.id.channelId}`}
+                    key={item.id.channelId}
+                  >
                     <Channel channelData={item} />
                   </Link>
                 )}

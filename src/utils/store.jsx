@@ -5,6 +5,7 @@ import filterSlice from "./filterSlice";
 import likeDislikeSlice from "./likeDislikeSlice";
 import searchSlice from "./searchSlice";
 import watchLaterSlice from "./watchLaterSlice";
+import historySlice from "./historySlice";
 const store = configureStore({
   reducer: {
     app: appSlice,
@@ -13,6 +14,7 @@ const store = configureStore({
     chat: chatSlice,
     watchLater: watchLaterSlice,
     likeDislike: likeDislikeSlice,
+    history: historySlice,
   },
 });
 

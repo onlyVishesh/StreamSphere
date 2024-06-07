@@ -1,11 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LongVideoCard from "../../components/LongVideoCard";
+import { addHistory, removeHistory } from "../../utils/historySlice";
 
 const Liked = () => {
   const liked = useSelector((store) => store.likeDislike.liked);
   console.log(liked);
   const isEmpty = Object.keys(liked).length === 0;
+  const dispatch = useDispatch();
+  const history = useSelector((store) => store.history);
 
   return (
     <div className="mt-10 flex w-full justify-center">
@@ -28,7 +31,18 @@ const Liked = () => {
             </div>
           ) : (
             Object.values(liked).map((video) => (
-              <Link to={`/watch?v=${video[0].id}`} key={video[0].id}>
+              <Link
+                to={`/watch?v=${video[0].id}`}
+                key={video[0].id}
+                onClick={() => {
+                  if (history[video[0].id]) {
+                    dispatch(removeHistory(video[0].id));
+                    dispatch(addHistory({ [video[0].id]: video[0] }));
+                  } else {
+                    dispatch(addHistory({ [video[0].id]: video[0] }));
+                  }
+                }}
+              >
                 <LongVideoCard data={video[0]} />
               </Link>
             ))

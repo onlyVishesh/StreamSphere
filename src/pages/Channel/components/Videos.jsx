@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import ShortVideoCard from "../../../components/ShortVideoCard";
 import ShortVideoCardShimmer from "../../../components/ShortVideoCardShimmer";
 import { channelVideoApi } from "../../../utils/constants";
+import { addHistory, removeHistory } from "../../../utils/historySlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Video = ({ channelId }) => {
   const [filter, setFilter] = useState("date");
@@ -10,6 +12,9 @@ const Video = ({ channelId }) => {
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
+
+  const dispatch = useDispatch();
+  const history = useSelector((store) => store.history);
 
   useEffect(() => {
     setVideoData([]);
@@ -115,7 +120,18 @@ const Video = ({ channelId }) => {
         </div>
         <div className="flex flex-wrap justify-center">
           {videoData.map((video) => (
-            <Link to={`/watch?v=${video.id.videoId}`} key={video.id.videoId}>
+            <Link
+              to={`/watch?v=${video.id.videoId}`}
+              key={video.id.videoId}
+              onClick={() => {
+                if (history[video.id]) {
+                  dispatch(removeHistory(video.id));
+                  dispatch(addHistory({ [video.id]: video }));
+                } else {
+                  dispatch(addHistory({ [video.id]: video }));
+                }
+              }}
+            >
               <ShortVideoCard videoInfo={video} />
             </Link>
           ))}

@@ -18,6 +18,7 @@ import Subscriber from "./pages/Subscriber/Subscriber";
 import Watch from "./pages/Watch/Watch";
 import WatchLater from "./pages/WatchLater/WatchLater";
 import store from "./utils/store";
+import History from "./pages/History/History";
 
 {
   /**
@@ -61,8 +62,10 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "watch", element: <Watch /> },
-      { path: "watchLater", element: <WatchLater /> },
       { path: "subscriber", element: <Subscriber /> },
+      { path: "history", element: <History /> },
+      { path: "watchLater", element: <WatchLater /> },
+      { path: "liked", element: <Liked /> },
       { path: "search", element: <Search /> },
       { path: "trending", element: <Trending /> },
       { path: "entertainment", element: <Entertainment /> },
@@ -73,7 +76,6 @@ const appRouter = createBrowserRouter([
       { path: "sports", element: <Sports /> },
       { path: "comedy", element: <Comedy /> },
       { path: "channel", element: <Channel /> },
-      { path: "liked", element: <Liked /> },
     ],
   },
 ]);
