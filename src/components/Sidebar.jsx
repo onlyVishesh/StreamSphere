@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const subscriptions = useSelector((store) => store.subscriptions);
 
   return !isMenuOpen ? (
     <div className=" fixed h-[95vh] w-14 bg-white px-1 py-4 text-[8px] text-slate-700 sm:w-20 sm:text-[10px]">
@@ -122,6 +123,35 @@ const Sidebar = () => {
           </ul>
         </div>
         <hr />
+        {Object.keys(subscriptions).length !== 0 && (
+          <>
+            <div className="">
+              <h2 className="-mt-1 flex w-full items-center rounded-lg px-2 py-2 font-medium text-opacity-90 hover:cursor-pointer hover:bg-slate-200">
+                Subscriptions
+              </h2>
+              <ul className="max-h-60 overflow-y-hidden hover:overflow-y-scroll">
+                {Object.values(subscriptions).map((subscription) => (
+                  <Link
+                    to={`/channel?c=${subscription.id}`}
+                    key={subscription.id}
+                  >
+                    <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                      <img
+                        src={subscription?.snippet?.thumbnails.default.url}
+                        alt={subscription?.snippet?.title}
+                        className="size-6 rounded-full"
+                      />
+                      <span className="line-clamp-1">
+                        {subscription?.snippet?.title}
+                      </span>
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </div>
+            <hr />
+          </>
+        )}
 
         <div className="">
           <h2 className="px-2 pb-2 font-medium text-opacity-90 ">Explore</h2>

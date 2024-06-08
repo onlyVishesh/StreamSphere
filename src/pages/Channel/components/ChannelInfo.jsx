@@ -1,9 +1,24 @@
 import { useState } from "react";
 import { abbreviateNumber } from "../../../utils/constants";
 import AboutModel from "./AboutModel";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addSubscription,
+  removeSubscription,
+} from "../../../utils/subscriptionsSlice";
 
 const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
   const [openAbout, setOpenAbout] = useState(false);
+  const subscriptions = useSelector((store) => store.subscriptions);
+  const dispatch = useDispatch();
+
+  const handleSubscribe = () => {
+    if (!subscriptions[channelId]) {
+      dispatch(addSubscription({ [channelId]: channelData[0] }));
+    } else {
+      dispatch(removeSubscription(channelId));
+    }
+  };
 
   return (
     <>
@@ -57,8 +72,13 @@ const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
               </button>
             </div>
             <div className="flex gap-2">
-              <button className="ml-3 rounded-full  bg-black px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800">
-                Subscribe
+              <button
+                className={`flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold ${subscriptions[channelId] ? "bg-gray-100 text-black hover:bg-gray-200 focus:bg-gray-200" : "bg-black text-gray-100 hover:bg-gray-700 focus:bg-gray-700"}`}
+                onClick={() => {
+                  handleSubscribe();
+                }}
+              >
+                {!subscriptions[channelId] ? "Subscribe" : "Subscribed"}
               </button>
             </div>
           </div>
