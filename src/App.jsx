@@ -62,7 +62,7 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "watch", element: <Watch /> },
-      { path: "subscriber", element: <Subscriber /> },
+      { path: "subscriptions", element: <Subscriber /> },
       { path: "history", element: <History /> },
       { path: "watchLater", element: <WatchLater /> },
       { path: "liked", element: <Liked /> },

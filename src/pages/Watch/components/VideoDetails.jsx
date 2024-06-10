@@ -41,13 +41,11 @@ const VideoDetails = (data) => {
   };
 
   const handleSubscribe = () => {
-    console.log(channelData);
     if (!subscriptions[channelData.id]) {
       dispatch(addSubscription({ [channelData.id]: channelData }));
     } else {
       dispatch(removeSubscription(channelData.id));
     }
-    console.log(subscriptions);
   };
 
   return (

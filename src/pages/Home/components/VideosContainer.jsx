@@ -7,12 +7,12 @@ import { filterApi } from "../../../utils/constants";
 import { addHistory, removeHistory } from "../../../utils/historySlice";
 
 const VideosContainer = () => {
+  const dispatch = useDispatch();
   const [videoData, setVideoData] = useState([]);
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
   const filterId = useSelector((store) => store.filter.filterId);
-  const dispatch = useDispatch();
   const history = useSelector((store) => store.history);
 
   useEffect(() => {
@@ -95,13 +95,11 @@ const VideosContainer = () => {
           to={`/watch?v=${video.id}`}
           key={video.id}
           onClick={() => {
-            if(history[video.id]){
-              dispatch(removeHistory(video.id))
+            if (history[video.id]) {
+              dispatch(removeHistory(video.id));
               dispatch(addHistory({ [video.id]: video }));
-            }
-            else{
+            } else {
               dispatch(addHistory({ [video.id]: video }));
-
             }
           }}
         >

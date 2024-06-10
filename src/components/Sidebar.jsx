@@ -44,7 +44,7 @@ const Sidebar = () => {
             />
             Home
           </Link>
-          <Link to="/subscribe">
+          <Link to="/subscriptions">
             <li className="flex w-full flex-col items-center justify-center gap-2 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
               <img
                 src={subscription}
@@ -78,7 +78,7 @@ const Sidebar = () => {
               <FontAwesomeIcon icon={faHouse} className="size-6 text-black" />
               Home
             </Link>
-            <Link to="/subscriber">
+            <Link to="/subscriptions">
               <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
                 <img
                   src={subscription}
@@ -227,62 +227,188 @@ const Sidebar = () => {
             More from YouTube
           </h2>
           <ul>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <img src={youtube} alt="shorts" className="size-6" />
-              YouTube Premium
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <img src={studios} alt="studios" className="size-6" />
-              YouTube Studio
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <img src={music} alt="music" className="size-6" />
-              YouTube Music
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <img src={kids} alt="kids" className="size-6" />
-              YouTube Kids
-            </li>
+            <a
+              href="https://www.youtube.com/premium"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <img src={youtube} alt="shorts" className="size-6" />
+                YouTube Premium
+              </li>
+            </a>
+            <a
+              href="https://studio.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <img src={studios} alt="studios" className="size-6" />
+                YouTube Studio
+              </li>
+            </a>
+            <a
+              href="https://music.youtube.com/browse/FEmusic_language_selection "
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <img src={music} alt="music" className="size-6" />
+                YouTube Music
+              </li>
+            </a>
+
+            <a
+              href="https://www.youtubekids.com/?source=youtube_web"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <img src={kids} alt="kids" className="size-6" />
+                YouTube Kids
+              </li>
+            </a>
           </ul>
         </div>
         <hr />
         <div className="">
           <ul>
-            <li className="hover:cursor-pointerhover:bg-slate-200 flex w-full items-center gap-5 rounded-lg px-2 py-2">
-              <FontAwesomeIcon icon={faGear} />
-              Setting
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faFlag} />
-              Report history
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faCircleQuestion} />
-              Help
-            </li>
-            <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
-              <FontAwesomeIcon icon={faMessage} />
-              Send feedback
-            </li>
+            <a
+              href="https://www.youtube.com/account"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faGear} />
+                Setting
+              </li>
+            </a>
+            <a
+              href="https://www.youtube.com/reporthistory"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faFlag} />
+                Report history
+              </li>
+            </a>
+            <a
+              href="https://www.youtubekids.com/?source=youtube_web"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faCircleQuestion} />
+                Help
+              </li>
+            </a>
+            <a
+              href="https://www.youtubekids.com/?source=youtube_web"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="flex w-full items-center gap-5 rounded-lg px-2 py-2 hover:cursor-pointer hover:bg-slate-200">
+                <FontAwesomeIcon icon={faMessage} />
+                Send feedback
+              </li>
+            </a>
           </ul>
         </div>
         <hr />
         <div className="m-2.5 flex flex-col gap-3 text-xs">
           <ul className="flex flex-wrap gap-1">
-            <li className="hover:cursor-pointer">About</li>
-            <li className="hover:cursor-pointer">Press</li>
-            <li className="hover:cursor-pointer">Copyright</li>
-            <li className="hover:cursor-pointer">Contact us</li>
-            <li className="hover:cursor-pointer">Creator</li>
-            <li className="hover:cursor-pointer">Advertise</li>
-            <li className="hover:cursor-pointer">Developers</li>
+            <a
+              href="https://www.youtube.com/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">About</li>
+            </a>
+            <a
+              href="https://www.youtube.com/about/press/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">Press</li>
+            </a>
+            <a
+              href="https://www.youtube.com/about/copyright/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">Copyright</li>
+            </a>
+            <a
+              href="https://www.youtube.com/t/contact_us/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">Contact us</li>
+            </a>
+            <a
+              href="https://www.youtube.com/creators/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">Creator</li>
+            </a>
+            <a
+              href="https://www.youtube.com/ads/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">Advertise</li>
+            </a>
+            <a
+              href="https://developers.google.com/youtube"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <li className="hover:cursor-pointer">Developers</li>
+            </a>
           </ul>
           <ul className="flex flex-wrap gap-1">
-            <li className="hover:cursor-pointer">Terms</li>
-            <li className="hover:cursor-pointer">Privacy</li>
-            <li className="hover:cursor-pointer">Policy & Safety</li>
-            <li className="hover:cursor-pointer">How YouTube works</li>
-            <li className="hover:cursor-pointer">Test new features</li>
+            <a
+              href="https://www.youtube.com/t/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              <li className="hover:cursor-pointer">Terms</li>
+            </a>
+            <a
+              href="https://www.youtube.com/t/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              <li className="hover:cursor-pointer">Privacy</li>
+            </a>
+            <a
+              href="https://www.youtube.com/about/policies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              <li className="hover:cursor-pointer">Policy & Safety</li>
+            </a>
+            <a
+              href="https://www.youtube.com/howyoutubeworks?utm_campaign=ytgen&utm_source=ythp&utm_medium=LeftNav&utm_content=txt&u=https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%3Futm_source%3Dythp%26utm_medium%3DLeftNav%26utm_campaign%3Dytgen"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              <li className="hover:cursor-pointer">How YouTube works</li>
+            </a>
+            <a
+              href="https://www.youtube.com/new"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              <li className="hover:cursor-pointer">Test new features</li>
+            </a>
           </ul>
           <div className="">{new Date().getFullYear()} Google LLC</div>
         </div>

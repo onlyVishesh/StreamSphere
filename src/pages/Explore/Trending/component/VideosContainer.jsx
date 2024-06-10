@@ -19,7 +19,6 @@ const VideosContainer = ({ filterId }) => {
     setPageToken(null);
     setNoVideos(false);
     getVideoData();
-    console.log(videoData);
   }, [filterId]);
 
   useEffect(() => {

@@ -12,10 +12,10 @@ const Channel = () => {
 
   useEffect(() => {
     getChannelData(channelId);
-  }, []);
+  }, [channelData]);
   useEffect(() => {
     getChannelBanner(channelId);
-  }, []);
+  }, [bannerUrl]);
 
   const getChannelData = async (channelId) => {
     const data = await fetch(channelApi(channelId));

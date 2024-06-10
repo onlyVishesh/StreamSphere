@@ -5,7 +5,6 @@ import { addHistory, removeHistory } from "../../utils/historySlice";
 
 const Liked = () => {
   const liked = useSelector((store) => store.likeDislike.liked);
-  console.log(liked);
   const isEmpty = Object.keys(liked).length === 0;
   const dispatch = useDispatch();
   const history = useSelector((store) => store.history);

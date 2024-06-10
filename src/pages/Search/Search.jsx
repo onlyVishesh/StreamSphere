@@ -18,7 +18,7 @@ const Search = () => {
     setPageToken(null);
     setNoVideos(false);
     getData();
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +61,6 @@ const Search = () => {
 
       setPageToken(json.nextPageToken);
       setNoVideos(false);
-      console.log(data);
     } catch (error) {
       console.error("Failed to load videos", error);
     } finally {

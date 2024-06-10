@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filters } from "../../../utils/constants";
 import { changeFilterId } from "../../../utils/filterSlice";
 import Button from "./Button";
 
 const FilterButtons = () => {
   const [titles, setTitles] = useState([]);
-  const [activeButtonId, setActiveButtonId] = useState(0);
+  const filterId = useSelector((store) => store.filter.filterId);
+  const [activeButtonId, setActiveButtonId] = useState(filterId);
   const dispatch = useDispatch();
 
   useEffect(() => {

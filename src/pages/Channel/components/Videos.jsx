@@ -21,7 +21,7 @@ const Video = ({ channelId }) => {
     setPageToken(null);
     setNoVideos(false);
     getVideoData(filter, channelId);
-  }, [filter]);
+  }, [filter, channelId]);
 
   useEffect(() => {
     const handleScroll = () => {

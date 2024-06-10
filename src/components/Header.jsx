@@ -8,21 +8,32 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/youtube.svg";
 import { toggleMenu } from "../utils/appSlice";
 import { searchSuggestionApi } from "../utils/constants";
+import { toggleApiRequest } from "../utils/openApiRequestSlice";
 import { cacheResults } from "../utils/searchSlice";
+import ApiRequest from "./ApiRequest";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchCache = useSelector((store) => store.search);
 
+  const isOpenApiRequest = useSelector((store) => store.openApiRequest);
+
+  const handleSearch = () => {
+    setShowSuggestions(false);
+    navigate(`/search?q=${searchQuery}`);
+  };
+
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
+    setShowSuggestions(false);
   };
 
   const getSearchSuggestion = async () => {
@@ -46,7 +57,6 @@ const Header = () => {
 
   const handleSuggestionClick = (suggestion) => {
     setSearchQuery(suggestion);
-    setShowSuggestions(false);
   };
 
   return (
@@ -85,6 +95,11 @@ const Header = () => {
               }}
               onBlur={() => {
                 setShowSuggestions(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
               }}
             />
             <Link to={`/search?q=${searchQuery}`}>
@@ -141,12 +156,16 @@ const Header = () => {
         <button
           type="button"
           className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 sm:h-9 sm:w-9"
+          onClick={() => {
+            dispatch(toggleApiRequest());
+          }}
         >
           <FontAwesomeIcon
             icon={faUser}
             className="text-sm text-slate-800 sm:text-lg"
           />
         </button>
+        <ApiRequest />
       </div>
     </div>
   );

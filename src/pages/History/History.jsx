@@ -6,7 +6,6 @@ import { addHistory, clearHistory, removeHistory } from "../../utils/historySlic
 const History = () => {
   const dispatch = useDispatch();
   const history = useSelector((store) => store.history);
-  console.log(history);
   const isEmpty = Object.keys(history).length === 0;
 
   return (

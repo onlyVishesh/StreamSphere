@@ -7,9 +7,13 @@ import likeDislikeSlice from "./likeDislikeSlice";
 import searchSlice from "./searchSlice";
 import subscriptionsSlice from "./subscriptionsSlice";
 import watchLaterSlice from "./watchLaterSlice";
+import openApiRequestSlice from "./openApiRequestSlice";
+import apiSlice from "./apiSlice";
 const store = configureStore({
   reducer: {
     app: appSlice,
+    openApiRequest: openApiRequestSlice,
+    api: apiSlice,
     filter: filterSlice,
     search: searchSlice,
     chat: chatSlice,
