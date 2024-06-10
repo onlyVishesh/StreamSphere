@@ -8,7 +8,6 @@ import { changeApi } from "../utils/apiSlice";
 
 const ApiRequest = () => {
   const open = useSelector((store) => store.openApiRequest.isApiRequestOpen);
-  const key = useSelector((store) => store.api);
   const [apiKey, setApiKey] = useState(null);
   const dispatch = useDispatch();
 
@@ -19,14 +18,14 @@ const ApiRequest = () => {
       onClick={() => {
         dispatch(closeApiRequest());
       }}
-      className=" fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
     >
       <div
         className="relative flex min-w-[300px] max-w-xl flex-col gap-2 rounded-lg bg-white p-5 px-7"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex w-full justify-between gap-10 text-3xl">
-          <div className="font-bold">Enter Costume Api Key </div>
+          <div className="font-bold">Enter Custom Api Key</div>
           <button
             onClick={() => {
               dispatch(closeApiRequest());
@@ -39,8 +38,8 @@ const ApiRequest = () => {
         <div className="flex gap-4">
           <input
             type="text"
-            placeholder="Enter Api key Here"
-            className="rounded-lg px-2 py-1 "
+            placeholder="Paste Api key Here"
+            className="rounded-lg px-2 py-1"
             style={{ border: "1px solid black" }}
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
@@ -52,7 +51,7 @@ const ApiRequest = () => {
             }}
           />
           <button
-            className="rounded-lg bg-slate-200 px-2 py-1 hover:bg-slate-300 "
+            className="rounded-lg bg-slate-200 px-2 py-1 hover:bg-slate-300"
             onClick={() => {
               dispatch(changeApi(apiKey));
             }}
@@ -61,7 +60,7 @@ const ApiRequest = () => {
           </button>
         </div>
         <div>
-          Does not have Api key ?{" "}
+          Does not have Api key?{" "}
           <a
             href="http://"
             target="_blank"
@@ -73,7 +72,7 @@ const ApiRequest = () => {
         </div>
       </div>
     </div>,
-    document.body,
+    document.body
   );
 };
 

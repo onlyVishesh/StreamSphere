@@ -19,6 +19,7 @@ import Watch from "./pages/Watch/Watch";
 import WatchLater from "./pages/WatchLater/WatchLater";
 import store from "./utils/store";
 import History from "./pages/History/History";
+import Error from "./components/Error";
 
 {
   /**
@@ -77,6 +78,7 @@ const appRouter = createBrowserRouter([
       { path: "comedy", element: <Comedy /> },
       { path: "channel", element: <Channel /> },
     ],
+    errorElement: <Error/>
   },
 ]);
 
