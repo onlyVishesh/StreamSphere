@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { abbreviateNumber } from "../../../utils/constants";
-import AboutModel from "./AboutModel";
 import { useDispatch, useSelector } from "react-redux";
+import { abbreviateNumber } from "../../../utils/constants";
 import {
   addSubscription,
   removeSubscription,
 } from "../../../utils/subscriptionsSlice";
+import AboutModel from "./AboutModel";
 
 const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
   const [openAbout, setOpenAbout] = useState(false);
@@ -22,10 +22,10 @@ const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
 
   return (
     <>
-      <div className="m-10 mt-0 flex w-full flex-col items-center justify-center gap-4">
+      <div className="mt-0 flex w-full flex-col items-center justify-center gap-4">
         <div className="flex w-full items-center justify-center">
           <div
-            className="h-56 w-3/4 rounded-xl"
+            className="lgh-56 h-24 w-3/4 rounded-xl sm:h-32 md:h-40 xl:h-60"
             style={{
               backgroundImage: `url(${bannerUrl})`,
               backgroundPosition: "center",
@@ -34,19 +34,19 @@ const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
             }}
           ></div>
         </div>
-        <div className="flex w-3/4 items-center justify-center gap-2 ">
-          <div className="w-2/12 rounded-full">
+        <div className="flex w-3/4 items-center justify-center ">
+          <div className="w-4/12 rounded-full">
             <img
               src={channelData[0]?.snippet?.thumbnails?.medium?.url}
               alt={channelData[0]?.snippet?.title}
-              className="w-48 rounded-full"
+              className="w-9/12 rounded-full md:w-9/12 lg:w-7/12"
             />
           </div>
-          <div className="flex w-10/12 flex-col gap-2">
-            <div className="text-4xl font-bold ">
+          <div className="flex w-full flex-col md:gap-1 lg:gap-2">
+            <div className="text-md gap-1 font-bold xs:text-lg  md:text-xl lg:text-4xl">
               {channelData[0]?.snippet?.title}
             </div>
-            <div className="flex gap-2 text-sm text-slate-600">
+            <div className="flex gap-2 text-[0.6rem] text-slate-600 xs:text-xs md:text-sm lg:text-lg">
               <div>{channelData[0]?.snippet?.customUrl}</div>&#8226;
               <div>
                 {abbreviateNumber(channelData[0]?.statistics?.subscriberCount)}{" "}
@@ -58,12 +58,13 @@ const ChannelInfo = ({ channelData, bannerUrl, channelId }) => {
                 videos
               </div>
             </div>
-            <div className="w-5/6 text-slate-500">
+            <div className="md:text-md w-5/6 text-[0.8rem] text-slate-500 xs:text-sm lg:text-lg">
               <div className={"line-clamp-2"}>
                 {channelData[0]?.snippet?.description}
               </div>
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   setOpenAbout(!openAbout);
                 }}
                 className="text-slate-700"

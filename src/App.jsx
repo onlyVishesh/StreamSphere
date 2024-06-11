@@ -11,6 +11,7 @@ import Music from "./pages/Explore/Music/Music";
 import News from "./pages/Explore/News/News";
 import Sports from "./pages/Explore/Sports/Sports";
 import Trending from "./pages/Explore/Trending/Trending";
+import History from "./pages/History/History";
 import Home from "./pages/Home/Home";
 import Liked from "./pages/Liked/Liked";
 import Search from "./pages/Search/Search";
@@ -18,7 +19,6 @@ import Subscriber from "./pages/Subscriber/Subscriber";
 import Watch from "./pages/Watch/Watch";
 import WatchLater from "./pages/WatchLater/WatchLater";
 import store from "./utils/store";
-import History from "./pages/History/History";
 import Error from "./components/Error";
 
 {

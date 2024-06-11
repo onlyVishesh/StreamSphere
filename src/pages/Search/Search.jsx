@@ -3,7 +3,9 @@ import { Link, useSearchParams } from "react-router-dom";
 import Channel from "../../components/Channel";
 import LongVideoCard from "../../components/LongVideoCard";
 import LongVideoCardShimmer from "../../components/LongVideoCardShimmer";
+import VideoCardShimmer from "../../components/VideoCardShimmer";
 import { searchApi } from "../../utils/constants";
+import VideoCard from "../../components/VideoCard";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -12,6 +14,15 @@ const Search = () => {
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setData([]);
@@ -77,18 +88,28 @@ const Search = () => {
 
   if (data.length === 0 && loading) {
     return (
-      <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
-        {new Array(20).fill(0).map((_, index) => (
-          <LongVideoCardShimmer key={index} />
-        ))}
+      <div className="mt-2 flex w-full justify-center md:mt-10">
+        <div className="w-11/12 md:w-10/12 lg:w-3/4">
+          <div className="mt-5 flex flex-wrap justify-center gap-2  md:justify-start md:gap-5">
+            {new Array(20)
+              .fill(0)
+              .map((_, index) =>
+                windowWidth > 767 ? (
+                  <LongVideoCardShimmer key={index} />
+                ) : (
+                  <VideoCardShimmer key={index} />
+                ),
+              )}
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="mt-10 flex w-full justify-center">
-      <div className="w-2/3">
-        <div className="flex flex-col gap-4">
+    <div className="mt-2 flex w-full justify-center md:mt-10">
+      <div className="w-11/12 md:w-10/12 lg:w-3/4">
+        <div className="mt-5 flex flex-wrap justify-center gap-2  md:justify-start md:gap-5">
           {data.map((item) => {
             return (
               <>
@@ -97,7 +118,11 @@ const Search = () => {
                     to={`/watch?v=${item.id.videoId}`}
                     key={item.id.videoId}
                   >
-                    <LongVideoCard data={item} />
+                    {windowWidth > 767 ? (
+                      <LongVideoCard data={item} />
+                    ) : (
+                      <VideoCard data={item} />
+                    )}
                   </Link>
                 )}
                 {item.id.kind === "youtube#channel" && (

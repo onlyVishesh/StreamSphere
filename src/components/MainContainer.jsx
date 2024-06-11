@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { closeMenuIfWidthLessThan1024 } from "../utils/appSlice";
 
 const MainContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(closeMenuIfWidthLessThan1024());
+  }, []);
+
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {

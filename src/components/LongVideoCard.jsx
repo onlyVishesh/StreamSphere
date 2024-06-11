@@ -41,8 +41,8 @@ const LongVideoCard = ({ data }) => {
   };
 
   return (
-    <div className="group flex w-5/6 gap-5">
-      <div className="relative flex-shrink-0">
+    <div className="group flex w-full gap-5">
+      <div className="relative aspect-video w-40 md:w-52 lg:w-80 flex-shrink-0">
         <img
           alt={data?.snippet?.title}
           src={data?.snippet?.thumbnails?.medium?.url}
@@ -55,7 +55,7 @@ const LongVideoCard = ({ data }) => {
       </div>
 
       <div className="flex flex-col gap-1">
-        <div className="text-xl font-semibold text-gray-800">
+        <div className="text-md lg:text-xl font-semibold text-gray-800 line-clamp-2">
           {data?.snippet?.title}
         </div>
         <div className="flex gap-3 text-sm text-slate-600">
@@ -72,7 +72,7 @@ const LongVideoCard = ({ data }) => {
           <div>{abbreviateNumber(data?.statistics?.viewCount)}</div> &#8226;
           <div>{timeSince(new Date(data?.snippet?.publishedAt))}</div>
         </div>
-        <div className="line-clamp-2 text-slate-800">
+        <div className="line-clamp-1 md:line-clamp-2 text-slate-800">
           {data?.snippet?.description}
         </div>
       </div>

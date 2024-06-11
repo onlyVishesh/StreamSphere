@@ -103,7 +103,7 @@ const VideosContainer = () => {
             }
           }}
         >
-          <VideoCard videoInfo={video} />
+          <VideoCard data={video} />
         </Link>
       ))}
       {loading && pageToken && (

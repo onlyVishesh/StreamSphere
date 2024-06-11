@@ -1,5 +1,3 @@
-// import "./Error.css"; // assuming you have a CSS file for styling
-
 import { useDispatch } from "react-redux";
 import { toggleApiRequest } from "../utils/openApiRequestSlice";
 import ApiRequest from "./ApiRequest";

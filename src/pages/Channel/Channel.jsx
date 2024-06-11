@@ -8,24 +8,33 @@ const Channel = () => {
   const [searchParams] = useSearchParams();
   const channelId = searchParams.get("c");
   const [channelData, setChannelData] = useState([]);
-  const [bannerUrl, setBannerUrl] = useState([]);
+  const [bannerUrl, setBannerUrl] = useState("");
 
   useEffect(() => {
-    getChannelData(channelId);
-  }, [channelData]);
-  useEffect(() => {
-    getChannelBanner(channelId);
-  }, [bannerUrl]);
+    if (channelId) {
+      getChannelData(channelId);
+      getChannelBanner(channelId);
+    }
+  }, [channelId]);
 
   const getChannelData = async (channelId) => {
-    const data = await fetch(channelApi(channelId));
-    const json = await data.json();
-    setChannelData(json.items);
+    try {
+      const response = await fetch(channelApi(channelId));
+      const json = await response.json();
+      setChannelData(json.items);
+    } catch (error) {
+      console.error("Failed to fetch channel data:", error);
+    }
   };
-  const getChannelBanner = async () => {
-    const data = await fetch(bannerApi(channelId));
-    const json = await data.json();
-    setBannerUrl(json.items[0].brandingSettings.image.bannerExternalUrl);
+
+  const getChannelBanner = async (channelId) => {
+    try {
+      const response = await fetch(bannerApi(channelId));
+      const json = await response.json();
+      setBannerUrl(json.items[0].brandingSettings.image.bannerExternalUrl);
+    } catch (error) {
+      console.error("Failed to fetch channel banner:", error);
+    }
   };
 
   return (

@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  isMenuOpen: true,
+};
+
 const appSlice = createSlice({
   name: "app",
-  initialState: {
-    isMenuOpen: true,
-  },
+  initialState,
   reducers: {
     toggleMenu: (state) => {
       state.isMenuOpen = !state.isMenuOpen;
@@ -11,8 +14,14 @@ const appSlice = createSlice({
     closeMenu: (state) => {
       state.isMenuOpen = false;
     },
+    closeMenuIfWidthLessThan1024: (state) => {
+      if (window.innerWidth < 1024) {
+        state.isMenuOpen = false;
+      }
+    },
   },
 });
 
-export const { toggleMenu, closeMenu } = appSlice.actions;
+export const { toggleMenu, closeMenu, closeMenuIfWidthLessThan1024 } =
+  appSlice.actions;
 export default appSlice.reducer;

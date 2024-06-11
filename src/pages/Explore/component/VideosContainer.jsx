@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import LongVideoCard from "../../../../components/LongVideoCard";
-import LongVideoCardShimmer from "../../../../components/LongVideoCardShimmer";
-import VideoCardShimmer from "../../../../components/VideoCardShimmer";
-import { filterApi } from "../../../../utils/constants";
-import { addHistory, removeHistory } from "../../../../utils/historySlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import LongVideoCard from "../../../components/LongVideoCard";
+import LongVideoCardShimmer from "../../../components/LongVideoCardShimmer";
+import VideoCard from "../../../components/VideoCard";
+import VideoCardShimmer from "../../../components/VideoCardShimmer";
+import { filterApi } from "../../../utils/constants";
+import { addHistory, removeHistory } from "../../../utils/historySlice";
 
 const VideosContainer = ({ filterId }) => {
   const [videoData, setVideoData] = useState([]);
   const [pageToken, setPageToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [noVideos, setNoVideos] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const history = useSelector((store) => store.history);
 
@@ -21,6 +23,15 @@ const VideosContainer = ({ filterId }) => {
     setNoVideos(false);
     getVideoData();
   }, [filterId]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +56,6 @@ const VideosContainer = ({ filterId }) => {
       if (token) {
         url += `&pageToken=${token}`;
       }
-
       const data = await fetch(url);
       const json = await data.json();
 
@@ -81,16 +91,22 @@ const VideosContainer = ({ filterId }) => {
 
   if (videoData.length === 0 && loading) {
     return (
-      <div className="mt-5 flex flex-wrap justify-start gap-1">
-        {new Array(20).fill(0).map((_, index) => (
-          <LongVideoCardShimmer key={index} />
-        ))}
+      <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
+        {new Array(20)
+          .fill(0)
+          .map((_, index) =>
+            windowWidth > 767 ? (
+              <LongVideoCardShimmer key={index} />
+            ) : (
+              <VideoCardShimmer key={index} />
+            ),
+          )}
       </div>
     );
   }
 
   return (
-    <div className="mt-5 flex flex-wrap justify-start gap-5">
+    <div className="mt-5 flex flex-wrap justify-center gap-2  md:justify-start md:gap-5">
       {videoData.map((video) => (
         <Link
           to={`/watch?v=${video.id}`}
@@ -104,15 +120,25 @@ const VideosContainer = ({ filterId }) => {
             }
           }}
         >
-          <LongVideoCard data={video} />
+          {windowWidth > 767 ? (
+            <LongVideoCard data={video} />
+          ) : (
+            <VideoCard data={video} />
+          )}
         </Link>
       ))}
 
       {loading && pageToken && (
         <>
-          {new Array(5).fill(0).map((_, index) => (
-            <LongVideoCardShimmer key={index} />
-          ))}
+          {new Array(5)
+            .fill(0)
+            .map((_, index) =>
+              windowWidth > 767 ? (
+                <LongVideoCardShimmer key={index} />
+              ) : (
+                <VideoCardShimmer key={index} />
+              ),
+            )}
         </>
       )}
     </div>

@@ -11,13 +11,11 @@ import {
 } from "../utils/constants";
 import { addWatchLater, removeWatchLater } from "../utils/watchLaterSlice";
 
-const VideoCard = ({ videoInfo }) => {
+const VideoCard = ({ data }) => {
   const [channelProfile, setChannelProfile] = useState([]);
 
-  const { snippet, statistics, contentDetails } = videoInfo;
+  const { snippet } = data;
   const { thumbnails, title, channelId, channelTitle, publishedAt } = snippet;
-  const { viewCount } = statistics;
-  const { duration } = contentDetails;
 
   const [isSaveVisible, setIsSaveVisible] = useState(false);
   const saveRef = useRef(null);
@@ -29,10 +27,10 @@ const VideoCard = ({ videoInfo }) => {
   };
 
   const addVideo = () => {
-    if (!watchLater[videoInfo.id]) {
-      dispatch(addWatchLater({ [videoInfo.id]: videoInfo }));
+    if (!watchLater[data.id]) {
+      dispatch(addWatchLater({ [data.id]: data }));
     } else {
-      dispatch(removeWatchLater(videoInfo.id));
+      dispatch(removeWatchLater(data.id));
     }
   };
 
@@ -53,9 +51,11 @@ const VideoCard = ({ videoInfo }) => {
       <div className="group m-1 flex w-80 cursor-pointer flex-col gap-1 p-2">
         <div className="relative -z-10">
           <img src={thumbnails.medium.url} alt="" className=" rounded-lg" />
-          <div className="absolute bottom-1 right-2 z-10 rounded-md bg-gray-900 px-1 py-0.5 text-xs text-white">
-            {formatDuration(duration)}
-          </div>
+          {data?.contentDetail?.duration && (
+            <div className="absolute bottom-1 right-2 z-10 rounded-md bg-gray-900 px-1 py-0.5 text-xs text-white">
+              {formatDuration(duration)}
+            </div>
+          )}
         </div>
         <div className="flex gap-3">
           <Link
@@ -80,10 +80,17 @@ const VideoCard = ({ videoInfo }) => {
                 className="rounded-full bg-gray-700 p-0.5 text-[0.5rem] text-white"
               />
             </Link>
+
             <div className="flex gap-1 text-sm">
-              <div>{abbreviateNumber(viewCount)} Views</div>
-              &#8226;
-              <div>{timeSince(new Date(publishedAt))}</div>
+              {data?.statistics?.viewCount && (
+                <div>{abbreviateNumber(data?.statistics?.viewCount)} Views</div>
+              )}
+              {data?.snippet?.publishedAt && (
+                <>
+                  &#8226;
+                  <div>{timeSince(new Date(publishedAt))}</div>
+                </>
+              )}
             </div>
           </div>
           <div
@@ -97,12 +104,12 @@ const VideoCard = ({ videoInfo }) => {
             &#8942;
             {isSaveVisible && (
               <div
-                className={` absolute flex items-center justify-center gap-2 rounded-full border-gray-900 px-3 py-2 font-semibold ${!watchLater[videoInfo.id] ? "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:bg-gray-200" : "bg-gray-800 text-gray-100 hover:bg-gray-700 focus:bg-gray-700"}`}
+                className={` absolute flex items-center justify-center gap-2 rounded-full border-gray-900 px-3 py-2 font-semibold ${!watchLater[data.id] ? "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:bg-gray-200" : "bg-gray-800 text-gray-100 hover:bg-gray-700 focus:bg-gray-700"}`}
                 onClick={() => {
                   addVideo();
                 }}
               >
-                {!watchLater[videoInfo.id] ? "Save" : "Saved"}
+                {!watchLater[data.id] ? "Save" : "Saved"}
               </div>
             )}
           </div>

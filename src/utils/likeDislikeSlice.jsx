@@ -13,9 +13,9 @@ const likeDislikeSlice = createSlice({
       state.liked[id] = Object.values(action.payload);
     },
     dislikeItem: (state, action) => {
-      const id = Object.keys(action.payload)[0];
+      const id = Object.keys(action.payload);
       delete state.liked[id];
-      state.disliked[id] = true;
+      state.disliked[id] = Object.values(action.payload);
     },
     removeLike: (state, action) => {
       const id = action.payload;

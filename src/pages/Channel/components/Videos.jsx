@@ -101,7 +101,7 @@ const Video = ({ channelId }) => {
   }
 
   return (
-    <div className="m-10 mt-0 flex w-full flex-col items-center justify-center gap-4">
+    <div className="m-0 mt-0 flex w-full flex-col items-center justify-center gap-4">
       <div className="flex w-3/4 flex-col gap-2">
         <div className="text-2xl font-bold">Videos</div>
         <div className="flex items-center justify-start gap-5">
