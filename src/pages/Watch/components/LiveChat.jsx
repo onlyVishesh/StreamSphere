@@ -62,11 +62,11 @@ const LiveChat = () => {
   };
 
   return (
-    <div className="flex-s relative flex h-[45rem] flex-col gap-2 rounded-lg border-2 border-slate-100 bg-slate-50 lg:h-[38rem] xl:h-[45rem]">
-      <div className="w-[85vw] border-b-2 bg-white px-4 py-2 text-lg lg:w-[30vw]">
+    <div className="relative flex h-[45rem] w-[95%] flex-col gap-2 rounded-lg border-2 border-slate-100 bg-slate-50 lg:h-[38rem] xl:h-[45rem]">
+      <div className=" border-b-2 bg-white px-4 py-2 text-lg lg:w-[30vw]">
         Top Chat
       </div>
-      <div className="mb-10 flex w-full flex-col-reverse overflow-y-scroll">
+      <div className="mb-10 flex flex-col-reverse overflow-y-scroll">
         {chatMessages.slice(-50).map(
           (
             message,
@@ -83,7 +83,7 @@ const LiveChat = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="absolute bottom-2 flex w-full items-center justify-center gap-3 bg-white"
+        className="absolute bottom-0 flex w-full items-center justify-center gap-3 bg-white"
       >
         <input
           placeholder="Chat..."
