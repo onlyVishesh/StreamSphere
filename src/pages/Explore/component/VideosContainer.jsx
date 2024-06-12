@@ -91,7 +91,7 @@ const VideosContainer = ({ filterId }) => {
 
   if (videoData.length === 0 && loading) {
     return (
-      <div className="ml-2 mt-20 flex flex-wrap justify-center gap-1">
+      <div className="mt-5 flex flex-wrap justify-center gap-2 md:justify-start md:gap-5">
         {new Array(20)
           .fill(0)
           .map((_, index) =>
@@ -106,7 +106,7 @@ const VideosContainer = ({ filterId }) => {
   }
 
   return (
-    <div className="mt-5 flex flex-wrap justify-center gap-2  md:justify-start md:gap-5">
+    <div className="mt-5 flex flex-wrap justify-center gap-2 md:justify-start md:gap-5">
       {videoData.map((video) => (
         <Link
           to={`/watch?v=${video.id}`}
