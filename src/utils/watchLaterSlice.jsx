@@ -29,7 +29,7 @@ const watchLaterSlice = createSlice({
   initialState,
   reducers: {
     addWatchLater: (state, action) => {
-      const newState = { ...state, ...action.payload };
+      const newState = { ...action.payload, ...state };
       saveStateToLocalStorage(newState);
       return newState;
     },

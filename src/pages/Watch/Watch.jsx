@@ -46,12 +46,17 @@ const Watch = () => {
 
   return (
     <div>
-      <div className="ml-5 flex flex-col gap-3 lg:w-9/12">
-        <Video data={[videoId, videoData?.snippet?.title]} />
-        <VideoDetails data={[videoData, channelData]} />
+      <div className="ml-5 flex flex-col justify-center gap-3 lg:w-9/12 ">
+        <div className="flex flex-col justify-between gap-5 lg:flex-row">
+          <div className="flex flex-col">
+            <Video data={[videoId, videoData?.snippet?.title]} />
+            <VideoDetails data={[videoData, channelData]} />
+          </div>
+
+          <LiveChat />
+        </div>
         <Comments data={[videoId, videoData?.statistics?.commentCount]} />
       </div>
-      <LiveChat />
     </div>
   );
 };

@@ -43,21 +43,21 @@ const Liked = () => {
           ) : (
             Object.values(liked).map((video) => (
               <Link
-                to={`/watch?v=${video[0].id}`}
-                key={video[0].id}
+                to={`/watch?v=${video.id}`}
+                key={video.id}
                 onClick={() => {
                   if (history[video[0].id]) {
-                    dispatch(removeHistory(video[0].id));
-                    dispatch(addHistory({ [video[0].id]: video[0] }));
+                    dispatch(removeHistory(video.id));
+                    dispatch(addHistory({ [video.id]: video }));
                   } else {
-                    dispatch(addHistory({ [video[0].id]: video[0] }));
+                    dispatch(addHistory({ [video.id]: video }));
                   }
                 }}
               >
                 {windowWidth > 767 ? (
-                  <LongVideoCard data={video[0]} />
+                  <LongVideoCard data={video} />
                 ) : (
-                  <VideoCard data={video[0]} />
+                  <VideoCard data={video} />
                 )}
               </Link>
             ))

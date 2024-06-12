@@ -4,8 +4,10 @@ const ChatMessage = ({ icon, name, message }) => {
       <img src={icon} alt="test" className="h-6 w-6 rounded-full" />
       <div className="flex">
         <div>
-          <span className="font-semibold">{name}</span>{" "}
-          <span className="text-sm">{message}</span>
+          <span className="text-md xl:text-md font-semibold lg:text-sm">
+            {name}
+          </span>{" "}
+          <span className="text-sm lg:text-xs xl:text-sm">{message}</span>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ import {
   uniqueNamesGenerator,
 } from "unique-names-generator";
 import { addMessage } from "../../../utils/chatSlice";
-import ChatMessage from "../../Home/components/ChatMessage";
+import ChatMessage from "../components/ChatMessage";
 
 const LiveChat = () => {
   const [liveMessage, setLiveMessage] = useState("");
@@ -41,7 +41,7 @@ const LiveChat = () => {
           }),
         );
       },
-      Math.floor(Math.random() * 4) * 1000,
+      Math.floor(Math.random() * 4 + 2) * 1000, // Interval between 2 to 5 seconds
     );
 
     return () => clearInterval(timer);
@@ -62,19 +62,24 @@ const LiveChat = () => {
   };
 
   return (
-    <div className="relative flex h-[45rem] flex-col gap-2 rounded-lg border-2 border-slate-100 bg-slate-50 lg:w-3/12">
-      <div className="w-[28rem] border-b-2 bg-white px-4 py-2 text-lg">
+    <div className="flex-s relative flex h-[45rem] flex-col gap-2 rounded-lg border-2 border-slate-100 bg-slate-50 lg:h-[38rem] xl:h-[45rem]">
+      <div className="w-[85vw] border-b-2 bg-white px-4 py-2 text-lg lg:w-[30vw]">
         Top Chat
       </div>
-      <div className="mb-10 flex flex-col-reverse overflow-y-scroll">
-        {chatMessages.map((message, index) => (
-          <ChatMessage
-            icon={message.icon}
-            name={message.name}
-            message={message.message}
-            key={index}
-          />
-        ))}
+      <div className="mb-10 flex w-full flex-col-reverse overflow-y-scroll">
+        {chatMessages.slice(-50).map(
+          (
+            message,
+            index, // Display only the last 50 messages
+          ) => (
+            <ChatMessage
+              icon={message.icon}
+              name={message.name}
+              message={message.message}
+              key={index}
+            />
+          ),
+        )}
       </div>
       <form
         onSubmit={handleSubmit}

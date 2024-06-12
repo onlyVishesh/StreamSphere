@@ -29,7 +29,7 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     addHistory: (state, action) => {
-      const newState = { ...state, ...action.payload };
+      const newState = {...action.payload, ...state };
       saveStateToLocalStorage(newState);
       return newState;
     },

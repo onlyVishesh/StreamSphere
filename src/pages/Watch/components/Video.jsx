@@ -3,9 +3,7 @@ const Video = (data) => {
   return (
     <>
       <iframe
-        className="rounded-xl"
-        width="1280"
-        height="720"
+        className="aspect-video w-[85vw] rounded-xl lg:w-[60vw]"
         src={"https://www.youtube.com/embed/" + videoId}
         title={title}
         frameBorder="0"
