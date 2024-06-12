@@ -17,8 +17,8 @@ import {
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import youtube from "../assets/StreamSphere.svg";
 import subscription from "../assets/subscription.svg";
-import youtube from "../assets/youtube.svg";
 import kids from "../assets/ytKids.svg";
 import music from "../assets/ytMusic.svg";
 import studios from "../assets/ytStudios.svg";

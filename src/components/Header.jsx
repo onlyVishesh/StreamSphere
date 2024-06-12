@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../assets/youtube.svg";
+import logo from "../assets/StreamSphere.svg";
 import { toggleMenu } from "../utils/appSlice";
 import { searchSuggestionApi } from "../utils/constants";
 import { toggleApiRequest } from "../utils/openApiRequestSlice";
@@ -74,9 +74,9 @@ const Header = () => {
         </button>
         <Link to="/">
           <figcaption className="flex content-center items-center gap-1 hover:cursor-pointer">
-            <img src={logo} alt="YouTube" className="w-6 md:w-8" />
+            <img src={logo} alt="YouTube" className="w-8 md:w-10" />
             <p className="hidden text-sm font-semibold -tracking-[1.5px] 2xs:block sm:text-xl">
-              YouTube
+              Stream Sphere
             </p>
           </figcaption>
         </Link>
