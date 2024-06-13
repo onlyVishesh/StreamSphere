@@ -47,6 +47,7 @@ const ApiRequest = () => {
               if (e.key === "Enter") {
                 dispatch(changeApi(apiKey));
                 setApiKey("");
+                dispatch(closeApiRequest());
               }
             }}
           />
@@ -54,6 +55,8 @@ const ApiRequest = () => {
             className="rounded-lg bg-slate-200 px-2 py-1 hover:bg-slate-300"
             onClick={() => {
               dispatch(changeApi(apiKey));
+              setApiKey("");
+              dispatch(closeApiRequest());
             }}
           >
             Submit

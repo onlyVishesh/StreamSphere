@@ -1,6 +1,6 @@
-export const apiKey =  import.meta.env.VITE_YOUTUBE_API;
+export const apiKey = import.meta.env.VITE_YOUTUBE_API;
 
-const ytApi = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=IN&key=${apiKey}`;
+export const ytApi = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=IN&key=${apiKey}`;
 
 export const filters = `https://www.googleapis.com/youtube/v3/videoCategories?regionCode=IN&key=${apiKey}`;
 
