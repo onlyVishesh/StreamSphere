@@ -5,37 +5,37 @@ const ytApi = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cconte
 export const filters = `https://www.googleapis.com/youtube/v3/videoCategories?regionCode=IN&key=${apiKey}`;
 
 export const searchSuggestionApi =
-  "https://youtube-search-server.onrender.com/api/youtube-suggestions?q=";
+  "https://youtube-search-server.onrender.com/api/youtube-suggestions?regionCode=IN&q=";
 
 export const filterApi = (filterId) =>
-  `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=25&key=` +
+  `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&videoCategoryId=${filterId}&maxResults=25&regionCode=IN&key=` +
   apiKey;
 
 export const commentsApi = (videoId) =>
-  `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&textFormat=plainText&videoId=${videoId}&maxResults=25&key=` +
+  `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&textFormat=plainText&videoId=${videoId}&maxResults=25&regionCode=IN&key=` +
   apiKey;
 
 export const replyApi = (commentId) =>
-  `https://youtube.googleapis.com/youtube/v3/comments?part=snippet&textFormat=plainText&parentId=${commentId}&maxResults=10&key=` +
+  `https://youtube.googleapis.com/youtube/v3/comments?part=snippet&textFormat=plainText&parentId=${commentId}&maxResults=10&regionCode=IN&key=` +
   apiKey;
 
 export const videoApi = (videoId) =>
-  `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${apiKey}`;
+  `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&regionCode=IN&key=${apiKey}`;
 
 export const profileApi = (channelId) =>
   `https://www.googleapis.com/youtube/v3/channels?part=snippet&fields=items%2Fsnippet%2Fthumbnails%2Fdefault&id=${channelId}&key=${apiKey}`;
 
 export const channelApi = (channelId) =>
-  `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${apiKey}`;
+  `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&regionCode=IN&key=${apiKey}`;
 
 export const bannerApi = (channelId) =>
-  `https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=${channelId}&key=${apiKey}`;
+  `https://www.googleapis.com/youtube/v3/channels?part=brandingSettings&id=${channelId}&regionCode=IN&key=${apiKey}`;
 
 export const channelVideoApi = (filter, channelId) =>
-  `https://www.googleapis.com/youtube/v3/search?order=${filter}&part=snippet&channelId=${channelId}&maxResults=25&type=video&key=${apiKey}`;
+  `https://www.googleapis.com/youtube/v3/search?order=${filter}&part=snippet&channelId=${channelId}&maxResults=25&type=video&regionCode=IN&key=${apiKey}`;
 
 export const searchApi = (search) =>
-  `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${search}&key=` +
+  `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&regionCode=IN&q=${search}&regionCode=IN&key=` +
   apiKey;
 
 export const aboutApi = "https://yt.lemnoslife.com/channels?part=about&id=";
