@@ -87,10 +87,11 @@ StreamSphere boasts the following key features:
 StreamSphere consists of the following pages:
 
 - **Home:** Discover trending and personalized videos with filter options.
-![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/8340d511-5ac4-43cf-8a88-f724771dee09)
+- ![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/5b755cb6-0db5-4953-a070-7944df489390)
 
 - **Watch:** Enjoy videos with live chat and interactive comments section.
-![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/6f7142cd-9818-40b6-8ab9-bf55c3cadbfe)
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/8efc867d-35fb-4336-b7ae-e0ed8b16c1c3)
+
 
 - **Subscription:** Stay updated with videos from subscribed channels.
 ![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/3f009115-5c69-4ac6-b33a-af7f02167521)
@@ -111,7 +112,8 @@ StreamSphere consists of the following pages:
 ![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/2a84d212-b210-4a71-bb89-d8b7530df775)
 
 - **Gaming:** Find gaming-related content and live streams.
-![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/1289fb1b-ce33-42c3-ac70-cccf3949c427)
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/f3a9adc9-ed07-43c4-8fdf-21f79dbe6275)
+
 
 
 ## 🌟 Getting Started
