@@ -19,6 +19,10 @@ StreamSphere is a comprehensive video streaming platform developed using React, 
 Watch the demo video to see the StreamSphere website in action: 
 
 
+https://github.com/onlyVishesh/StreamSphere/assets/121187728/09b9b888-af5d-41da-b1a6-bad882850504
+
+
+
 ## Live Website
 
 Visit the live website to explore your Taste: [Website](https://stream-sphere-five.vercel.app/)
@@ -83,15 +87,32 @@ StreamSphere boasts the following key features:
 StreamSphere consists of the following pages:
 
 - **Home:** Discover trending and personalized videos with filter options.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/8340d511-5ac4-43cf-8a88-f724771dee09)
+
 - **Watch:** Enjoy videos with live chat and interactive comments section.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/6f7142cd-9818-40b6-8ab9-bf55c3cadbfe)
+
 - **Subscription:** Stay updated with videos from subscribed channels.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/3f009115-5c69-4ac6-b33a-af7f02167521)
+
 - **History:** Easily access previously watched videos.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/c9e60ab8-ed37-4a51-b264-c3b25b697301)
+
 - **Liked:** Keep track of your liked videos.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/0fb2b377-b858-4549-9c2b-3b7c3a95d879)
+
 - **Watch Later:** Bookmark videos for later viewing.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/f0877fb1-8872-449c-82cc-c64dc17fa791)
+
 - **Trending:** Explore popular videos across different categories.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/d6d14e73-79cf-4774-a059-915ae243b1f8)
+
 - **Music:** Discover music videos and playlists.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/2a84d212-b210-4a71-bb89-d8b7530df775)
+
 - **Gaming:** Find gaming-related content and live streams.
-- **News:** Stay informed with news videos from around the world.
+![image](https://github.com/onlyVishesh/StreamSphere/assets/121187728/1289fb1b-ce33-42c3-ac70-cccf3949c427)
+
 
 ## 🌟 Getting Started
 
